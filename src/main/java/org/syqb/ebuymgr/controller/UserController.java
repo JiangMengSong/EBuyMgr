@@ -16,4 +16,5 @@ public class UserController {
     public String toLogin(){
         return "user/login";
     }
+
 }

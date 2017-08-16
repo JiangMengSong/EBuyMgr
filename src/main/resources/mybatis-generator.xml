@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- !!!! Driver Class Path !!!! -->
+    <classPathEntry
+            location="D:\Data\Develop\Workspaces\IDEA\MavenProject\MavenConfig\repository\mysql\mysql-connector-java\5.1.40\mysql-connector-java-5.1.40.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3">
+
+        <!-- 生成一对一配置 -->
+        <!-- <plugin houseType="cc.bandaotixi.plugins.OneToOnePlugin"></plugin> -->
+
+        <!-- 生成一对多配置 -->
+        <!-- <plugin houseType="cc.bandaotixi.plugins.OneToManyPlugin" /> -->
+
+        <!-- 批量插入和批量更新 -->
+        <!-- <plugin houseType="cc.bandaotixi.plugins.BatchInsertPlugin" /> -->
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>
+
+        <!-- 数据库连接配置 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/easybuy"
+                        userId="MySql" password="111111"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 实体生成配置 -->
+        <javaModelGenerator targetPackage="org.syqb.ebuymgr.pojo" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- Mapper XML文件配置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- Mapper 接口配置 -->
+        <javaClientGenerator targetPackage="org.syqb.ebuymgr.mapper" targetProject="THIS_CONFIGURATION_IS_NOT_REQUIRED"
+                             type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 映射表配置 -->
+        <table tableName="easybuy_news" domainObjectName="EasyBuyNews" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="newsId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_user" domainObjectName="EasyBuyUser" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="userId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_user_address" domainObjectName="EasyBuyUserAddress" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="userId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_order" domainObjectName="EasyBuyOrder" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="orderId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_order_detail" domainObjectName="EasyBuyOrderDetail" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="orderDetailId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_product" domainObjectName="EasyBuyProduct" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="productId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_product_category" domainObjectName="EasyBuyProductCategory" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="categoryId" javaType="java.lang.Integer"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyOrderDetailMapper" >
+  <resultMap id="OrderDetailBean" type="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+    <id column="orderDetailId" property="orderdetailid" jdbcType="INTEGER" />
+    <result column="orderQuantity" property="orderquantity" jdbcType="INTEGER" />
+    <result column="orderCost" property="ordercost" jdbcType="REAL" />
+    <collection property="order" resultMap="org.syqb.ebuymgr.mapper.EasyBuyOrderMapper.OrderBean"/>
+    <collection property="product" resultMap="org.syqb.ebuymgr.mapper.EasyBuyProductMapper.ProductBean"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    orderDetailId, orderId, productId, orderQuantity, orderCost
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="OrderDetailBean" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from easybuy_order_detail
+    where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from easybuy_order_detail
+    where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+    insert into easybuy_order_detail (orderDetailId, orderId, productId, 
+      orderQuantity, orderCost)
+    values (#{orderdetailid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, 
+      #{orderquantity,jdbcType=INTEGER}, #{ordercost,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+    insert into easybuy_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderdetailid != null" >
+        orderDetailId,
+      </if>
+      <if test="orderid != null" >
+        orderId,
+      </if>
+      <if test="productid != null" >
+        productId,
+      </if>
+      <if test="orderquantity != null" >
+        orderQuantity,
+      </if>
+      <if test="ordercost != null" >
+        orderCost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderdetailid != null" >
+        #{orderdetailid,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderquantity != null" >
+        #{orderquantity,jdbcType=INTEGER},
+      </if>
+      <if test="ordercost != null" >
+        #{ordercost,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+    update easybuy_order_detail
+    <set >
+      <if test="orderid != null" >
+        orderId = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="orderquantity != null" >
+        orderQuantity = #{orderquantity,jdbcType=INTEGER},
+      </if>
+      <if test="ordercost != null" >
+        orderCost = #{ordercost,jdbcType=REAL},
+      </if>
+    </set>
+    where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+    update easybuy_order_detail
+    set orderId = #{orderid,jdbcType=INTEGER},
+      productId = #{productid,jdbcType=INTEGER},
+      orderQuantity = #{orderquantity,jdbcType=INTEGER},
+      orderCost = #{ordercost,jdbcType=REAL}
+    where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
+  </update>
+</mapper>

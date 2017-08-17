@@ -21,7 +21,7 @@
     from easybuy_product
     where productId = #{productid,jdbcType=INTEGER}
   </select>
-  <select id="getEasyBuyProduct" resultMap="ProductBean">
+  <select id="getProduct" resultMap="ProductBean">
       select *
       from easybuy_product p
       inner join easybuy_product_category c on p.categoryId = c.categoryId

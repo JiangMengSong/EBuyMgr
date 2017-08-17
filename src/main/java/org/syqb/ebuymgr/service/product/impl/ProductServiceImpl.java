@@ -14,7 +14,7 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     @Override
-    public List<Product> getEasyBuyProduct() {
-        return productMapper.getEasyBuyProduct();
+    public List<Product> getProduct() {
+        return productMapper.getProduct();
     }
 }

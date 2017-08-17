@@ -5,5 +5,5 @@ import org.syqb.ebuymgr.pojo.Category;
 import java.util.List;
 
 public interface CategoryService {
-    List<Category> getEasyBuyProductCategory();
+    List<Category> getCategory();
 }

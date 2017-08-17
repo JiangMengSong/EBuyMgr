@@ -20,37 +20,57 @@
             $("#resBtn").click(function () {
                 var name = $("#loginname").val();
                 if (name == null || name == "") {
-                    alert('用户名不能为空');
+                    alert('用户名不能为空！');
                     return false;
                 }
                 var uname= $("#username").val();
                 if (name == null || name == "") {
-                    alert('真实姓名不能为空');
+                    alert('真实姓名不能为空！');
                     return false;
                 }
                 var pwd=$("#pwd").val();
                 if (pwd == null || pwd == "") {
-                    alert('密码不能为空');
+                    alert('密码不能为空！');
                     return false;
                 }
                 var pwdagin=$("#pwdagin").val();
                 if (pwdagin == null || pwdagin == "") {
-                    alert('请确认密码');
+                    alert('请确认密码！');
                     return false;
                 }
                 if(pwd!=pwdagin){
-                    alert('两次密码不一致，请重新输入');
+                    alert('两次密码不一致，请重新输入！');
                     return false;
                 }
                 if(pwd.length<6){
-                    alert('密码过短，请重新输入');
+                    alert('密码过短，请重新输入！');
                     return false;
                 }
                 var iden=$("#iden").val();
-                if(pwd.length!=18){
-                    alert('身份证号必须为18位，请重新输入');
+                if(iden.length!=18){
+                    alert('身份证号必须为18位，请重新输入！');
                     return false;
                 }
+
+                var email=$("#email").val();
+                var re=/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
+                var result=re.test(email);
+                if(result!=true){
+                    alert('邮箱格式不正确，请重新输入！');
+                    return false;
+                }
+
+                var mobile=$("#mobile").val();
+                if(mobile.length!=11){
+                    alert('手机号码长度为11位，请重新输入！');
+                }
+
+                var address=$("#address").val();
+                if(address==null||address==""){
+                    alert('地址不能为空！');
+                }
+
+
 
 
                 $.ajax({

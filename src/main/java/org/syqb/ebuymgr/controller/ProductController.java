@@ -21,7 +21,7 @@ public class ProductController {
     @RequestMapping(value = "/doIndex.html",produces = "text/html;charset=utf-8")
     public String doIndex(HttpServletRequest request){
        // request.setAttribute("categoryList", );
-        request.setAttribute("productList", productService.getEasyBuyProduct());
+        request.setAttribute("productList", productService.getProduct());
         return "product/index";
     }
 }

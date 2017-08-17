@@ -12,6 +12,29 @@
     <link type="text/css" rel="stylesheet" href="../../statics/css/style.css" />
     <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="../../statics/scripts/function.js"></script>
+    <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+    <script src="../../js/jquery-3.2.1.js"></script>
+    <script>
+
+            $("#login").click(function () {
+                $.ajax({
+                    url: "/user/doLogin.html",
+                    data: $("#loginFrom").serialize(),
+                    dataType: "json",
+                    type: "post",
+                    success: function (result) {
+                        if (result.flag == true) {
+                            alert('登录成功');
+
+                        } else alert("登录失败");
+                    }, error: function () {
+                        alert("登录错误")
+                    }
+                });
+
+        });
+    </script>
+
 </head>
 <body>
 <div id="header" class="wrap">
@@ -23,7 +46,7 @@
         <em class="corner rt"></em>
         <div class="box">
             <h1>欢迎回到易买网</h1>
-            <form id="loginForm" method="post" action="index.html" >
+            <form id="loginForm" method="post"  >
                 <table>
                     <tr>
                         <td class="field">用户名：</td>
@@ -43,8 +66,8 @@
                         <td></td>
                         <td>
                             <label class="ui-green">
-                                <input type="submit" name="submit" value="立即登录" />
-                                <input type="button" id="registerBtn" value="立即注册" />
+                                <button type="button" id="login">立即登录</button>
+                                <button type="button" id="reg">立即注册</button>
                             </label>
                         </td>
                     </tr>

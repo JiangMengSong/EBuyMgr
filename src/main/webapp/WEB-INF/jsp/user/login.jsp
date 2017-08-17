@@ -66,8 +66,8 @@
                         <td></td>
                         <td>
                             <label class="ui-green">
-                                <button type="button" id="login">立即登录</button>
-                                <button type="button" id="reg">立即注册</button>
+                                <input type="button" id="login" value="立即登录">
+                                <input type="button" id="insert" value="立即注册">
                             </label>
                         </td>
                     </tr>

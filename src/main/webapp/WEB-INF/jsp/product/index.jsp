@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -9,16 +10,21 @@
 <html>
 <head>
     <title>易买网 - 首页</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css" />
     <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="../../statics/scripts/function.js"></script>
+    <script>
+        <%--<c:if test="${empty users}">--%>
+            <%--location.href = "/product/doIndex.html";--%>
+        <%--</c:if>--%>
+    </script>
 </head>
 <body>
 <div id="welcomeImage">
     <img width="100%" height="150" src="images/banner.jpg" alt="welcome">
 </div>
 <div id="header" class="wrap">
-    <div id="logo"><img src="images/logo.gif" /></div>
+    <div id="logo"><img src="../../statics/scripts/images/logo.gif" /></div>
     <div class="help"><a href="shopping.html" id="shoppingBag" class="shopping">购物车X件</a><a href="login.html">登录</a><a class="button" id="logout" href="javascript:void(0);">注销</a><a href="register.html">注册</a><a href="guestbook.html">留言</a><a href="manage/index.html">后台管理</a></div>
     <div class="navbar">
         <ul class="clearfix">

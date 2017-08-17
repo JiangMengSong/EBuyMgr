@@ -2,6 +2,8 @@ package org.syqb.ebuymgr.mapper;
 
 import org.syqb.ebuymgr.pojo.EasyBuyProduct;
 
+import java.util.List;
+
 public interface EasyBuyProductMapper {
     int deleteByPrimaryKey(Integer productid);
 
@@ -14,4 +16,6 @@ public interface EasyBuyProductMapper {
     int updateByPrimaryKeySelective(EasyBuyProduct record);
 
     int updateByPrimaryKey(EasyBuyProduct record);
+
+    List<EasyBuyProduct> getEasyBuyProduct();
 }

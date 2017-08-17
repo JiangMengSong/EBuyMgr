@@ -25,7 +25,7 @@
                     success: function (result) {
                         if (result.flag == true) {
                             alert('登录成功');
-
+                            location.href="/product/toIndex.html";
                         } else alert("登录失败");
                     }, error: function () {
                         alert("登录错误")

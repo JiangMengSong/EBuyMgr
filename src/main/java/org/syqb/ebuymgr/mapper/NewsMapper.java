@@ -20,7 +20,7 @@ public interface NewsMapper {
 
     int updateByPrimaryKey(News record);
 
-    List<News> getNewsByPage(@Param("pageIndex")Integer pageIndex, @Param("pageSize")Integer pageSize);
+    List<News> getNewsByPage(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
 
     int getNewsCount();
 }

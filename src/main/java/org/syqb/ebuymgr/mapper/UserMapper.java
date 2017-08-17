@@ -3,6 +3,8 @@ package org.syqb.ebuymgr.mapper;
 import org.apache.ibatis.annotations.Param;
 import org.syqb.ebuymgr.pojo.User;
 
+import java.util.List;
+
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userid);
 
@@ -17,4 +19,8 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User selectByLoginName(@Param("loginName") String loginName);
+
+    int getUserCount();
+
+    List<User> getUserByPage(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
 }

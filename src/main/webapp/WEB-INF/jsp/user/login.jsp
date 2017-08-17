@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>易买网 - 首页</title>
-    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
     <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="../../statics/scripts/function.js"></script>
     <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
@@ -18,7 +18,7 @@
         $(function () {
 
             $("#regBtn").click(function () {
-                location.href="toRegister.html";
+                location.href = "toRegister.html";
             });
 
             $("#loginBtn").click(function () {
@@ -30,7 +30,7 @@
                     success: function (result) {
                         if (result.flag == true) {
                             alert('登录成功');
-                            location.href="/product/toIndex.html";
+                            location.href = "/product/toIndex.html";
                         } else alert("登录失败");
                     }, error: function () {
                         alert("登录错误")
@@ -43,7 +43,7 @@
 </head>
 <body>
 <div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/images/logo.gif" /></div>
+    <div id="logo"><img src="../../statics/images/logo.gif"/></div>
 </div>
 <div id="register" class="wrap">
     <div class="shadow">
@@ -56,14 +56,14 @@
                     <tr>
                         <td class="field">用户名：</td>
                         <td>
-                            <input class="text" type="text" id="userId" name="loginname" />
+                            <input class="text" type="text" id="userId" name="loginname"/>
                             <span></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="field">登录密码：</td>
                         <td>
-                            <input class="text" type="password" id="password" name="userpassword" />
+                            <input class="text" type="password" id="password" name="userpassword"/>
                             <span></span>
                         </td>
                     </tr>

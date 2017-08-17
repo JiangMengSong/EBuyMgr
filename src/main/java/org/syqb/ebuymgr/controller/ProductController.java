@@ -24,17 +24,17 @@ public class ProductController {
     @Resource(name = "newsService")
     NewsService newsService;
 
-    @RequestMapping(value = "/toIndex.html",produces = "text/html;charset=utf-8")
-    public String toIndex(){
+    @RequestMapping(value = "/toIndex.html", produces = "text/html;charset=utf-8")
+    public String toIndex() {
         return "redirect:/product/doIndex.html/1";
     }
 
-    @RequestMapping(value = "/doIndex.html/{pageIndex}",produces = "text/html;charset=utf-8")
-    public String doIndex(HttpServletRequest request, Pages<Product> pages,Integer categoryId){
-        request.setAttribute("newsList",newsService.getNewsByDate());
+    @RequestMapping(value = "/doIndex.html/{pageIndex}", produces = "text/html;charset=utf-8")
+    public String doIndex(HttpServletRequest request, Pages<Product> pages, Integer categoryId) {
+        request.setAttribute("newsList", newsService.getNewsByDate());
         request.setAttribute("categoryList", categoryService.getCategory());
         request.setAttribute("productList", productService.getProduct(pages));
-        request.setAttribute("pages",pages);
+        request.setAttribute("pages", pages);
         return "product/index";
     }
 }

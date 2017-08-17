@@ -12,7 +12,7 @@
     <title>后台管理 - 易买网</title>
     <script>
         function goToPage(pageIndex) {
-            location.href = "/mgr/news/getNews.html/" + pageIndex;
+            location.href = "/mgr/comment/getComment.html/" + pageIndex;
         }
     </script>
 </head>
@@ -26,8 +26,8 @@
             <li><a href="/user/getUsers.html">用户</a></li>
             <li><a href="product.html">商品</a></li>
             <li><a href="order.html">订单</a></li>
-            <li><a href="/mgr/comment/getComment.html">留言</a></li>
-            <li class="current"><a href="/mgr/news/getNews.html">新闻</a></li>
+            <li class="current"><a href="/mgr/comment/getComment.html">留言</a></li>
+            <li><a href="/mgr/news/getNews.html">新闻</a></li>
         </ul>
     </div>
 </div>
@@ -35,27 +35,35 @@
 <div id="main" class="wrap">
     <%@include file="../common/left.jsp" %>
     <div class="main">
-        <h2>新闻管理</h2>
+        <h2>留言管理</h2>
         <div class="manage">
             <table class="list">
                 <tr>
                     <th>ID</th>
-                    <th>新闻标题</th>
+                    <th>姓名</th>
+                    <th>留言内容</th>
+                    <th>状态</th>
                     <th>操作</th>
                 </tr>
-                <c:forEach items="${pages.pageList}" var="news">
+                <c:forEach items="${pages.pageList}" var="comment">
                     <tr>
-                        <td class="first w4 c">${news.newsid}</td>
-                        <td>${news.newstitle}</td>
+                        <td class="first w4 c">${comment.commentid}</td>
+                        <td class="w1 c">${comment.user.username}</td>
+                        <td>${comment.commentcontent}</td>
                         <td class="w1 c">
-                            <a href="news-modify.html">修改</a>
+                            <c:if test="${null != comment.replycontent &&  comment.replycontent != ''}">
+                                已回复
+                            </c:if>
+                        </td>
+                        <td class="w1 c">
+                            <a href="guestbook-modify.html">修改</a>
                             <a class="manageDel" href="javascript:void(0)">删除</a>
                         </td>
                     </tr>
                 </c:forEach>
             </table>
+            <%@include file="../common/pager.jsp" %>
         </div>
-        <%@include file="../common/pager.jsp" %>
     </div>
     <div class="clear"></div>
 </div>

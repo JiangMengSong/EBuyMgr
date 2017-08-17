@@ -13,8 +13,8 @@
 <script>
     window.setTimeout(function () {
         $("#nowTime").html(new Date().toTimeString())
-    },0)
+    }, 0)
     window.setInterval(function () {
         $("#nowTime").html(new Date().toTimeString())
-    },1000)
+    }, 1000)
 </script>

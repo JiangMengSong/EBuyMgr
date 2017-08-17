@@ -53,28 +53,28 @@
 
         <!-- 映射表配置 -->
         <!--<table tableName="easybuy_news" domainObjectName="News" enableCountByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--<columnOverride column="newsId" javaType="java.lang.Integer"/>-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+        <!--<columnOverride column="newsId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="easybuy_user" domainObjectName="User" enableCountByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--<columnOverride column="userId" javaType="java.lang.Integer"/>-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+        <!--<columnOverride column="userId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="easybuy_user_address" domainObjectName="UserAddress" enableCountByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--<columnOverride column="userId" javaType="java.lang.Integer"/>-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+        <!--<columnOverride column="userId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="easybuy_order" domainObjectName="Order" enableCountByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--<columnOverride column="orderId" javaType="java.lang.Integer"/>-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+        <!--<columnOverride column="orderId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="easybuy_order_detail" domainObjectName="OrderDetail" enableCountByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--<columnOverride column="orderDetailId" javaType="java.lang.Integer"/>-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+        <!--<columnOverride column="orderDetailId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <!--<table tableName="easybuy_product" domainObjectName="Product" enableCountByExample="false"-->
-               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
-            <!--<columnOverride column="productId" javaType="java.lang.Integer"/>-->
+        <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+        <!--<columnOverride column="productId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
         <table tableName="easybuy_comment" domainObjectName="Comment" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">

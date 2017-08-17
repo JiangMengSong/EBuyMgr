@@ -16,5 +16,5 @@ public interface CommentMapper {
 
     int getCommentCount();
 
-    List<Comment> getCommentByPage(@Param("pageIndex")Integer pageIndex, @Param("pageSize")Integer pageSize);
+    List<Comment> getCommentByPage(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
 }

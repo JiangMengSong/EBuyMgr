@@ -1,93 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.OrderMapper" >
-  <resultMap id="OrderBean" type="org.syqb.ebuymgr.pojo.Order" >
-    <id column="orderId" property="orderid" jdbcType="INTEGER" />
-    <result column="orderCreateTime" property="ordercreatetime" jdbcType="TIMESTAMP" />
-    <result column="orderCost" property="ordercost" jdbcType="DOUBLE" />
-    <result column="orderSerialNumber" property="orderserialnumber" jdbcType="VARCHAR" />
-    <collection property="user" resultMap="org.syqb.ebuymgr.mapper.UserMapper.UserBean"/>
-  </resultMap>
-  <sql id="Base_Column_List" >
-    orderId, userId, orderCreateTime, orderCost, orderSerialNumber
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="OrderBean" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from easybuy_order
-    where orderId = #{orderid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from easybuy_order
-    where orderId = #{orderid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Order" >
-    insert into easybuy_order (orderId, userId, orderCreateTime, 
-      orderCost, orderSerialNumber)
-    values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{ordercreatetime,jdbcType=TIMESTAMP}, 
-      #{ordercost,jdbcType=DOUBLE}, #{orderserialnumber,jdbcType=VARCHAR})
-  </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Order" >
-    insert into easybuy_order
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="orderid != null" >
-        orderId,
-      </if>
-      <if test="userid != null" >
-        userId,
-      </if>
-      <if test="ordercreatetime != null" >
-        orderCreateTime,
-      </if>
-      <if test="ordercost != null" >
-        orderCost,
-      </if>
-      <if test="orderserialnumber != null" >
-        orderSerialNumber,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="orderid != null" >
-        #{orderid,jdbcType=INTEGER},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="ordercreatetime != null" >
-        #{ordercreatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="ordercost != null" >
-        #{ordercost,jdbcType=DOUBLE},
-      </if>
-      <if test="orderserialnumber != null" >
-        #{orderserialnumber,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.Order" >
-    update easybuy_order
-    <set >
-      <if test="userid != null" >
-        userId = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="ordercreatetime != null" >
+<mapper namespace="org.syqb.ebuymgr.mapper.OrderMapper">
+    <resultMap id="OrderBean" type="org.syqb.ebuymgr.pojo.Order">
+        <id column="orderId" property="orderid" jdbcType="INTEGER"/>
+        <result column="orderCreateTime" property="ordercreatetime" jdbcType="TIMESTAMP"/>
+        <result column="orderCost" property="ordercost" jdbcType="DOUBLE"/>
+        <result column="orderSerialNumber" property="orderserialnumber" jdbcType="VARCHAR"/>
+        <collection property="user" resultMap="org.syqb.ebuymgr.mapper.UserMapper.UserBean"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        orderId, userId, orderCreateTime, orderCost, orderSerialNumber
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="OrderBean" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from easybuy_order
+        where orderId = #{orderid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from easybuy_order
+        where orderId = #{orderid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Order">
+        insert into easybuy_order (orderId, userId, orderCreateTime,
+        orderCost, orderSerialNumber)
+        values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{ordercreatetime,jdbcType=TIMESTAMP},
+        #{ordercost,jdbcType=DOUBLE}, #{orderserialnumber,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Order">
+        insert into easybuy_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderid != null">
+                orderId,
+            </if>
+            <if test="userid != null">
+                userId,
+            </if>
+            <if test="ordercreatetime != null">
+                orderCreateTime,
+            </if>
+            <if test="ordercost != null">
+                orderCost,
+            </if>
+            <if test="orderserialnumber != null">
+                orderSerialNumber,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderid != null">
+                #{orderid,jdbcType=INTEGER},
+            </if>
+            <if test="userid != null">
+                #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="ordercreatetime != null">
+                #{ordercreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ordercost != null">
+                #{ordercost,jdbcType=DOUBLE},
+            </if>
+            <if test="orderserialnumber != null">
+                #{orderserialnumber,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.Order">
+        update easybuy_order
+        <set>
+            <if test="userid != null">
+                userId = #{userid,jdbcType=INTEGER},
+            </if>
+            <if test="ordercreatetime != null">
+                orderCreateTime = #{ordercreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ordercost != null">
+                orderCost = #{ordercost,jdbcType=DOUBLE},
+            </if>
+            <if test="orderserialnumber != null">
+                orderSerialNumber = #{orderserialnumber,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where orderId = #{orderid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.Order">
+        update easybuy_order
+        set userId = #{userid,jdbcType=INTEGER},
         orderCreateTime = #{ordercreatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="ordercost != null" >
         orderCost = #{ordercost,jdbcType=DOUBLE},
-      </if>
-      <if test="orderserialnumber != null" >
-        orderSerialNumber = #{orderserialnumber,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where orderId = #{orderid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.Order" >
-    update easybuy_order
-    set userId = #{userid,jdbcType=INTEGER},
-      orderCreateTime = #{ordercreatetime,jdbcType=TIMESTAMP},
-      orderCost = #{ordercost,jdbcType=DOUBLE},
-      orderSerialNumber = #{orderserialnumber,jdbcType=VARCHAR}
-    where orderId = #{orderid,jdbcType=INTEGER}
-  </update>
+        orderSerialNumber = #{orderserialnumber,jdbcType=VARCHAR}
+        where orderId = #{orderid,jdbcType=INTEGER}
+    </update>
 </mapper>

@@ -16,7 +16,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getNewsByDate() {
-        return newsMapper.getNewsByPage(0,10);
+        return newsMapper.getNewsByPage(0, 10);
     }
 
     @Override

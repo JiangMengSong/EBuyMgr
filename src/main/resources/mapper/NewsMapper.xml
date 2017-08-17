@@ -1,84 +1,84 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.NewsMapper" >
-  <resultMap id="NewsBean" type="org.syqb.ebuymgr.pojo.News" >
-    <id column="newsId" property="newsid" jdbcType="INTEGER" />
-    <result column="newsTitle" property="newstitle" jdbcType="VARCHAR" />
-    <result column="newsContent" property="newscontent" jdbcType="VARCHAR" />
-    <result column="newsCreateTime" property="newscreatetime" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="org.syqb.ebuymgr.mapper.NewsMapper">
+    <resultMap id="NewsBean" type="org.syqb.ebuymgr.pojo.News">
+        <id column="newsId" property="newsid" jdbcType="INTEGER"/>
+        <result column="newsTitle" property="newstitle" jdbcType="VARCHAR"/>
+        <result column="newsContent" property="newscontent" jdbcType="VARCHAR"/>
+        <result column="newsCreateTime" property="newscreatetime" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     newsId, newsTitle, newsContent, newsCreateTime
   </sql>
-  <select id="selectByPrimaryKey" resultMap="NewsBean" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from easybuy_news
-    where newsId = #{newsid,jdbcType=INTEGER}
-  </select>
+    <select id="selectByPrimaryKey" resultMap="NewsBean" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from easybuy_news
+        where newsId = #{newsid,jdbcType=INTEGER}
+    </select>
     <select id="getNewsByPage" resultMap="NewsBean">
         select * from easybuy_news ORDER BY newsCreateTime DESC limit #{pageIndex},#{pageSize}
     </select>
     <select id="getNewsCount" resultType="java.lang.Integer">
         select count(*) from easybuy_news
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from easybuy_news
     where newsId = #{newsid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.News" >
+    <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.News">
     insert into easybuy_news (newsId, newsTitle, newsContent, 
       newsCreateTime)
     values (#{newsid,jdbcType=INTEGER}, #{newstitle,jdbcType=VARCHAR}, #{newscontent,jdbcType=VARCHAR}, 
       #{newscreatetime,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.News" >
-    insert into easybuy_news
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="newsid != null" >
-        newsId,
-      </if>
-      <if test="newstitle != null" >
-        newsTitle,
-      </if>
-      <if test="newscontent != null" >
-        newsContent,
-      </if>
-      <if test="newscreatetime != null" >
-        newsCreateTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="newsid != null" >
-        #{newsid,jdbcType=INTEGER},
-      </if>
-      <if test="newstitle != null" >
-        #{newstitle,jdbcType=VARCHAR},
-      </if>
-      <if test="newscontent != null" >
-        #{newscontent,jdbcType=VARCHAR},
-      </if>
-      <if test="newscreatetime != null" >
-        #{newscreatetime,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.News" >
-    update easybuy_news
-    <set >
-      <if test="newstitle != null" >
-        newsTitle = #{newstitle,jdbcType=VARCHAR},
-      </if>
-      <if test="newscontent != null" >
-        newsContent = #{newscontent,jdbcType=VARCHAR},
-      </if>
-      <if test="newscreatetime != null" >
-        newsCreateTime = #{newscreatetime,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where newsId = #{newsid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.News" >
+    <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.News">
+        insert into easybuy_news
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="newsid != null">
+                newsId,
+            </if>
+            <if test="newstitle != null">
+                newsTitle,
+            </if>
+            <if test="newscontent != null">
+                newsContent,
+            </if>
+            <if test="newscreatetime != null">
+                newsCreateTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="newsid != null">
+                #{newsid,jdbcType=INTEGER},
+            </if>
+            <if test="newstitle != null">
+                #{newstitle,jdbcType=VARCHAR},
+            </if>
+            <if test="newscontent != null">
+                #{newscontent,jdbcType=VARCHAR},
+            </if>
+            <if test="newscreatetime != null">
+                #{newscreatetime,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.News">
+        update easybuy_news
+        <set>
+            <if test="newstitle != null">
+                newsTitle = #{newstitle,jdbcType=VARCHAR},
+            </if>
+            <if test="newscontent != null">
+                newsContent = #{newscontent,jdbcType=VARCHAR},
+            </if>
+            <if test="newscreatetime != null">
+                newsCreateTime = #{newscreatetime,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where newsId = #{newsid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.News">
     update easybuy_news
     set newsTitle = #{newstitle,jdbcType=VARCHAR},
       newsContent = #{newscontent,jdbcType=VARCHAR},

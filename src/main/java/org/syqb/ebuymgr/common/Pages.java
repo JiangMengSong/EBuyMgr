@@ -31,7 +31,7 @@ public class Pages<T> {
 
     public void setTotalCount(Integer totalCount) {
         this.totalCount = totalCount;
-        if (totalCount < pageIndex) pageIndex = 1 ;
+        if (totalCount < pageIndex) pageIndex = 1;
         if (this.totalCount % pageSize == 0) totalPage = this.totalCount / pageSize;
         else totalPage = this.totalCount / pageSize + 1;
     }

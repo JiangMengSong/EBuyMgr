@@ -18,7 +18,7 @@ public interface ProductMapper {
 
     int updateByPrimaryKey(Product record);
 
-    List<Product> getProduct(@Param("pageIndex")Integer pageIndex,@Param("pageSize")Integer pageSize,@Param("categoryId")Integer categoryId);
+    List<Product> getProduct(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize, @Param("categoryId") Integer categoryId);
 
-    List<Product> getProductCount(@Param("pageIndex")Integer pageIndex,@Param("pageSize")Integer pageSize,@Param("categoryId")Integer categoryId);
+    List<Product> getProductCount(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize, @Param("categoryId") Integer categoryId);
 }

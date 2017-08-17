@@ -15,17 +15,17 @@ public class NewsController {
     @Resource(name = "newsService")
     NewsService newsService;
 
-    @RequestMapping(value = "/getNews.html",produces = "text/html;charset=utf-8")
-    public String getNews(){
+    @RequestMapping(value = "/getNews.html", produces = "text/html;charset=utf-8")
+    public String getNews() {
         return "redirect:/mgr/news/getNews.html/1";
     }
 
-    @RequestMapping(value = "/getNews.html/{pageIndex}",produces = "text/html;charset=utf-8")
-    public String getNews(HttpServletRequest request, Pages<News> pages){
+    @RequestMapping(value = "/getNews.html/{pageIndex}", produces = "text/html;charset=utf-8")
+    public String getNews(HttpServletRequest request, Pages<News> pages) {
         pages.setPageSize(6);
         pages.setTotalCount(newsService.getNewsCount());
         pages.setPageList(newsService.getNewsByPage(pages));
-        request.setAttribute("pages",pages);
+        request.setAttribute("pages", pages);
         return "manager/news/newsList";
     }
 

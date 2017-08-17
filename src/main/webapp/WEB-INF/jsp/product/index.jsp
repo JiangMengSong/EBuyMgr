@@ -10,16 +10,16 @@
 <html>
 <head>
     <title>易买网 - 首页</title>
-    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
     <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="../../statics/scripts/function.js"></script>
     <script>
         <%--<c:if test="${empty users}">--%>
-            <%--location.href = "/product/doIndex.html";--%>
+        <%--location.href = "/product/doIndex.html";--%>
         <%--</c:if>--%>
         // 分页带条件跳转
         function goToPage(pageIndex) {
-            $("#provisoForm").attr("action","/house/getHouse.html/"+pageIndex);
+            $("#provisoForm").attr("action", "/house/getHouse.html/" + pageIndex);
             $("#provisoForm").submit();
         }
     </script>
@@ -29,7 +29,7 @@
     <img width="100%" height="150" src="images/banner.jpg" alt="welcome">
 </div>
 <div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/images/logo.gif" /></div>
+    <div id="logo"><img src="../../statics/images/logo.gif"/></div>
     <div class="help">
         <a href="shopping.html" id="shoppingBag" class="shopping">
             购物车X件
@@ -42,8 +42,8 @@
             <a class="button" id="logout" href="javascript:void(0);">注销</a>
         </c:if>
         <c:if test="${users.usertype == 1}">
-            <a href="/user/toManager.html">后台管理</a></div>
-        </c:if>
+        <a href="/user/toManager.html">后台管理</a></div>
+    </c:if>
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="#">首页</a></li>
@@ -97,8 +97,9 @@
         <div class="last-view">
             <h2>最近浏览</h2>
             <dl class="clearfix">
-                <dt><img src="../../statics/images/product/10_small.jpg" /></dt>
-                <dd><a href="product-view.html"  target="_self">利仁2018M福满堂电饼铛 好用实惠</a><a href="product-view.html"></a></dd>
+                <dt><img src="../../statics/images/product/10_small.jpg"/></dt>
+                <dd><a href="product-view.html" target="_self">利仁2018M福满堂电饼铛 好用实惠</a><a href="product-view.html"></a>
+                </dd>
                 <dt>&nbsp;</dt>
                 <dd>&nbsp;</dd>
             </dl>
@@ -118,7 +119,7 @@
             <ul class="product clearfix">
                 <li>
                     <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/1.jpg" /></a></dt>
+                        <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
                         <dd class="title"><a href="product-view.html" target="_self">法国德菲丝松露精品巧克力500g/盒</a></dd>
                         <dd class="price">￥108.0</dd>
                     </dl>
@@ -149,7 +150,7 @@
                 <h4>新闻动态</h4>
                 <ul>
                     <c:forEach items="${newsList}" var="news">
-                        <li><a href="news-view.html"  target="_self">${news.newstitle}</a></li>
+                        <li><a href="news-view.html" target="_self">${news.newstitle}</a></li>
                     </c:forEach>
                 </ul>
             </div>

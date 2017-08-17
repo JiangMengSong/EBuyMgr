@@ -37,6 +37,12 @@ public class UserController {
         }
         return result.toString();
     }
+    //注册页
+    @RequestMapping(value = "/toRegister.html", produces = "text/html;charset=utf-8")
+    public String reg(){
+
+        return "user/register";
+    }
 
     //注册
     @RequestMapping(value = "/register.html", produces = "text/html;charset=utf-8")

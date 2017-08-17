@@ -18,6 +18,7 @@
     <script>
         $(function () {
             $("#resBtn").click(function () {
+
                 var name = $("#loginname").val();
                 if (name == null || name == "") {
                     alert('用户名不能为空！');
@@ -28,7 +29,7 @@
                     alert('真实姓名不能为空！');
                     return false;
                 }
-                var pwd=$("#pwd").val();
+                var pwd=$("#password").val();
                 if (pwd == null || pwd == "") {
                     alert('密码不能为空！');
                     return false;
@@ -53,6 +54,11 @@
                 }
 
                 var email=$("#email").val();
+                if(email==null||email==""){
+                    alert("邮箱不能为空！");
+                    return false;
+                }
+
                 var re=/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/;
                 var result=re.test(email);
                 if(result!=true){
@@ -63,15 +69,14 @@
                 var mobile=$("#mobile").val();
                 if(mobile.length!=11){
                     alert('手机号码长度为11位，请重新输入！');
+                    return false;
                 }
 
                 var address=$("#address").val();
                 if(address==null||address==""){
                     alert('地址不能为空！');
+                    return false;
                 }
-
-
-
 
                 $.ajax({
                     url: "/user/register.html",
@@ -81,6 +86,7 @@
                     success: function (result) {
                         if (result.flag == true) {
                             alert('注册成功');
+                            location.href("toLogin.html");
 
                         } else alert("注册失败");
                     }, error: function () {
@@ -119,7 +125,7 @@
                     </tr>
                     <tr>
                         <td class="field">登录密码(*)：</td>
-                        <td><input class="text" type="password" id="password" name="userpassword" id="pwd" /><span></span></td>
+                        <td><input class="text" type="password" id="password" name="userpassword"  /><span></span></td>
                     </tr>
                     <tr>
                         <td class="field">确认密码(*)：</td>

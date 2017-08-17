@@ -17,6 +17,11 @@
         <%--<c:if test="${empty users}">--%>
             <%--location.href = "/product/doIndex.html";--%>
         <%--</c:if>--%>
+        // 分页带条件跳转
+        function goToPage(pageIndex) {
+            $("#provisoForm").attr("action","/house/getHouse.html/"+pageIndex);
+            $("#provisoForm").submit();
+        }
     </script>
 </head>
 <body>
@@ -63,13 +68,12 @@
         <div class="box">
             <h2>商品分类</h2>
             <dl>
-                <c:forEach items="${productList}" var="product">
-                    <c:if test="${product.category.categorytype == 1}">
-                        <c:set var="productId" value="${product.category.categoryid}"/>
-                        <dt>${product.productname}</dt>
-                        <c:forEach items="${productList}" var="product">
-                            <c:if test="${product.category.categoryparentid == productId}">
-                                <dd><a href="product-list.html">${product.productname}</a></dd>
+                <c:forEach items="${categoryList}" var="category">
+                    <c:if test="${category.categorytype == 1}">
+                        <dt>${category.categoryname}</dt>
+                        <c:forEach items="${categoryList}" var="categorys">
+                            <c:if test="${categorys.categoryparentid == category.categoryid}">
+                                <dd><a href="product-list.html">${categorys.categoryname}</a></dd>
                             </c:if>
                         </c:forEach>
                     </c:if>
@@ -80,7 +84,7 @@
         <div class="last-view">
             <h2>最近浏览</h2>
             <dl class="clearfix">
-                <dt><img src="images/product/10_small.jpg" /></dt>
+                <dt><img src="../../statics/images/product/10_small.jpg" /></dt>
                 <dd><a href="product-view.html"  target="_self">利仁2018M福满堂电饼铛 好用实惠</a><a href="product-view.html"></a></dd>
                 <dt>&nbsp;</dt>
                 <dd>&nbsp;</dd>
@@ -91,10 +95,10 @@
         <div class="price-off">
             <div class="slideBox">
                 <ul id="slideBox">
-                    <li><img src="images/product/banner_1.jpg"/></li>
-                    <li><img src="images/product/banner_2.jpg"/></li>
-                    <li><img src="images/product/banner_3.jpg"/></li>
-                    <li><img src="images/product/banner_4.jpg"/></li>
+                    <li><img src="../../statics/images/product/banner_1.jpg"/></li>
+                    <li><img src="../../statics/images/product/banner_2.jpg"/></li>
+                    <li><img src="../../statics/images/product/banner_3.jpg"/></li>
+                    <li><img src="../../statics/images/product/banner_4.jpg"/></li>
                 </ul>
             </div>
             <h2>商品列表</h2>
@@ -106,72 +110,34 @@
                         <dd class="price">￥108.0</dd>
                     </dl>
                 </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/2.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">乐扣普通型保鲜盒圣诞7件套</a></dd>
-                        <dd class="price">￥69.90</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/3.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">欧珀莱均衡保湿四件套</a></dd>
-                        <dd class="price">￥279.0</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/4.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">联想笔记本电脑 高速独立显存</a></dd>
-                        <dd class="price">￥4199</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/5.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">法姿韩版显瘦彩边时尚牛仔铅笔裤</a></dd>
-                        <dd class="price">￥49.00</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/6.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">Genius925纯银施华洛世奇水晶吊坠</a></dd>
-                        <dd class="price">￥69.90</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/10.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">利仁2018M福满堂电饼铛 好用实惠</a></dd>
-                        <dd class="price">￥268.0</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html"  target="_self"><img src="images/product/8.jpg" /></a></dt>
-                        <dd class="title"><a href="product-view.html"  target="_self">达派高档拉杆箱20寸 经典款式</a></dd>
-                        <dd class="price">￥198.0</dd>
-                    </dl>
-                </li>
             </ul>
+            <div>
+                <c:if test="${pages.pageIndex  > 1}">
+                    <a href="javascript:void(0);" onclick="goToPage(1)">首页</a>
+                </c:if>
+                <ul class="allPage"></ul>
+                <span>${pages.pageIndex}/${pages.totalPage}</span>
+                <c:if test="${pages.pageIndex  != 1}">
+                    <a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex - 1})">上一页</a>
+                </c:if>
+                <c:if test="${pages.pageIndex < pages.totalPage}">
+                    <a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex + 1})">下一页</a>
+                </c:if>
+                <c:if test="${pages.pageIndex < pages.totalPage}">
+                    <a href="javascript:void(0);" onclick="goToPage(${pages.totalPage})">末页</a>
+                </c:if>
+                <input style="width: 30px" id="goPage">
+                <button type="button" id="goPageBtn">Go</button>
+            </div>
         </div>
         <div class="side">
             <div class="spacer"></div>
             <div class="news-list">
                 <h4>新闻动态</h4>
                 <ul>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
-                    <li><a href="news-view.html"  target="_self">抢钱啦</a></li>
+                    <c:forEach items="${newsList}" var="news">
+                        <li><a href="news-view.html"  target="_self">${news.newstitle}</a></li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>

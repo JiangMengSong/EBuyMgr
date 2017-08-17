@@ -16,6 +16,9 @@
     from easybuy_news
     where newsId = #{newsid,jdbcType=INTEGER}
   </select>
+  <select id="getNews" resultMap="NewsBean">
+      select * from easybuy_news ORDER BY newsCreateTime DESC limit 0 ,10
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from easybuy_news
     where newsId = #{newsid,jdbcType=INTEGER}

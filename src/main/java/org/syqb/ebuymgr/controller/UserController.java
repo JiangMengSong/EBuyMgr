@@ -27,9 +27,9 @@ public class UserController {
     @ResponseBody
     public String doLogin(HttpSession session, EasyBuyUser users) {
         JSONObject result = new JSONObject();
-        if (users == null || users.getUsername() == null) result.put("flag", false);
+        if (users == null || users.getLoginname() == null) result.put("flag", false);
         else {
-            EasyBuyUser loginUsers = easyBuyUserService.selectByLoginName(users.getUsername());
+            EasyBuyUser loginUsers = easyBuyUserService.selectByLoginName(users.getLoginname());
             if ((loginUsers != null && loginUsers.getUserpassword().equals(users.getUserpassword()))) {
                 result.put("flag", true);
                 session.setAttribute("users", loginUsers);

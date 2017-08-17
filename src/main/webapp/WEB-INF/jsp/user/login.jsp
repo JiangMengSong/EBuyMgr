@@ -15,11 +15,11 @@
     <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
     <script src="../../js/jquery-3.2.1.js"></script>
     <script>
-
-            $("#login").click(function () {
+        $(function () {
+            $("#loginBtn").click(function () {
                 $.ajax({
                     url: "/user/doLogin.html",
-                    data: $("#loginFrom").serialize(),
+                    data: $("#loginForm").serialize(),
                     dataType: "json",
                     type: "post",
                     success: function (result) {
@@ -31,7 +31,7 @@
                         alert("登录错误")
                     }
                 });
-
+            });
         });
     </script>
 
@@ -46,19 +46,19 @@
         <em class="corner rt"></em>
         <div class="box">
             <h1>欢迎回到易买网</h1>
-            <form id="loginForm" method="post"  >
+            <form id="loginForm" method="post">
                 <table>
                     <tr>
                         <td class="field">用户名：</td>
                         <td>
-                            <input class="text" type="text" id="userId" name="userId" />
+                            <input class="text" type="text" id="userId" name="loginname" />
                             <span></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="field">登录密码：</td>
                         <td>
-                            <input class="text" type="password" id="password" name="password" />
+                            <input class="text" type="password" id="password" name="userpassword" />
                             <span></span>
                         </td>
                     </tr>
@@ -66,8 +66,7 @@
                         <td></td>
                         <td>
                             <label class="ui-green">
-                                <input type="button" id="login" value="立即登录">
-                                <input type="button" id="insert" value="立即注册">
+                                <input type="button" id="loginBtn" value="立即登录">
                             </label>
                         </td>
                     </tr>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyUserMapper" >
-  <resultMap id="UserBean" type="org.syqb.ebuymgr.pojo.EasyBuyUser" >
+<mapper namespace="org.syqb.ebuymgr.mapper.UserMapper" >
+  <resultMap id="UserBean" type="org.syqb.ebuymgr.pojo.User" >
     <id column="userId" property="userid" jdbcType="INTEGER" />
     <result column="loginName" property="loginname" jdbcType="VARCHAR" />
     <result column="userName" property="username" jdbcType="VARCHAR" />
@@ -22,7 +22,7 @@
     from easybuy_user
     where userId = #{userid,jdbcType=INTEGER}
   </select>
-    <select id="selectByLoginName" resultType="org.syqb.ebuymgr.pojo.EasyBuyUser">
+    <select id="selectByLoginName" resultType="org.syqb.ebuymgr.pojo.User">
         select
         <include refid="Base_Column_List" />
         from easybuy_user
@@ -32,7 +32,7 @@
     delete from easybuy_user
     where userId = #{userid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUser" >
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.User" >
     insert into easybuy_user (userId, loginName, userName, 
       userPassword, userSex, identityCode, 
       userEmail, userMobile, userType
@@ -42,7 +42,7 @@
       #{useremail,jdbcType=VARCHAR}, #{usermobile,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUser" >
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.User" >
     insert into easybuy_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
@@ -103,7 +103,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUser" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.User" >
     update easybuy_user
     <set >
       <if test="loginname != null" >
@@ -133,7 +133,7 @@
     </set>
     where userId = #{userid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUser" >
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.User" >
     update easybuy_user
     set loginName = #{loginname,jdbcType=VARCHAR},
       userName = #{username,jdbcType=VARCHAR},

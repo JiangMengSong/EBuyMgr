@@ -1,11 +1,11 @@
 package org.syqb.ebuymgr.pojo;
 
-public class EasyBuyOrderDetail {
+public class OrderDetail {
     private Integer orderdetailid;
 
-    private EasyBuyOrder order;
+    private Order order;
 
-    private EasyBuyProduct product;
+    private Product product;
 
     private Integer orderquantity;
 
@@ -19,19 +19,19 @@ public class EasyBuyOrderDetail {
         this.orderdetailid = orderdetailid;
     }
 
-    public EasyBuyOrder getOrder() {
+    public Order getOrder() {
         return order;
     }
 
-    public void setOrder(EasyBuyOrder order) {
+    public void setOrder(Order order) {
         this.order = order;
     }
 
-    public EasyBuyProduct getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(EasyBuyProduct product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyOrderDetailMapper" >
-  <resultMap id="OrderDetailBean" type="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+<mapper namespace="org.syqb.ebuymgr.mapper.OrderDetailMapper" >
+  <resultMap id="OrderDetailBean" type="org.syqb.ebuymgr.pojo.OrderDetail" >
     <id column="orderDetailId" property="orderdetailid" jdbcType="INTEGER" />
     <result column="orderQuantity" property="orderquantity" jdbcType="INTEGER" />
     <result column="orderCost" property="ordercost" jdbcType="REAL" />
-    <collection property="order" resultMap="org.syqb.ebuymgr.mapper.EasyBuyOrderMapper.OrderBean"/>
-    <collection property="product" resultMap="org.syqb.ebuymgr.mapper.EasyBuyProductMapper.ProductBean"/>
+    <collection property="order" resultMap="org.syqb.ebuymgr.mapper.OrderMapper.OrderBean"/>
+    <collection property="product" resultMap="org.syqb.ebuymgr.mapper.ProductMapper.ProductBean"/>
   </resultMap>
   <sql id="Base_Column_List" >
     orderDetailId, orderId, productId, orderQuantity, orderCost
@@ -21,13 +21,13 @@
     delete from easybuy_order_detail
     where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.OrderDetail" >
     insert into easybuy_order_detail (orderDetailId, orderId, productId, 
       orderQuantity, orderCost)
     values (#{orderdetailid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, 
       #{orderquantity,jdbcType=INTEGER}, #{ordercost,jdbcType=REAL})
   </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.OrderDetail" >
     insert into easybuy_order_detail
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="orderdetailid != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.OrderDetail" >
     update easybuy_order_detail
     <set >
       <if test="orderid != null" >
@@ -82,7 +82,7 @@
     </set>
     where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.EasyBuyOrderDetail" >
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.OrderDetail" >
     update easybuy_order_detail
     set orderId = #{orderid,jdbcType=INTEGER},
       productId = #{productid,jdbcType=INTEGER},

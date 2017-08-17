@@ -1,6 +1,6 @@
 package org.syqb.ebuymgr.pojo;
 
-public class EasyBuyProductCategory {
+public class Category {
     private Integer categoryid;
 
     private String categoryname;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyProductMapper" >
-  <resultMap id="ProductBean" type="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
+<mapper namespace="org.syqb.ebuymgr.mapper.ProductMapper" >
+  <resultMap id="ProductBean" type="org.syqb.ebuymgr.pojo.Product" >
     <id column="productId" property="productid" jdbcType="INTEGER" />
     <result column="productName" property="productname" jdbcType="VARCHAR" />
     <result column="productDescription" property="productdescription" jdbcType="VARCHAR" />
@@ -9,7 +9,7 @@
     <result column="productStock" property="productstock" jdbcType="INTEGER" />
     <result column="productFileName" property="productfilename" jdbcType="VARCHAR" />
     <result column="isDelete" property="isdelete" jdbcType="INTEGER" />
-    <collection property="category" resultMap="org.syqb.ebuymgr.mapper.EasyBuyProductCategoryMapper.CategoryBean"/>
+    <collection property="category" resultMap="org.syqb.ebuymgr.mapper.CategoryMapper.CategoryBean"/>
   </resultMap>
   <sql id="Base_Column_List" >
     productId, productName, productDescription, productPrice, productStock, categoryId, 
@@ -23,13 +23,14 @@
   </select>
   <select id="getEasyBuyProduct" resultMap="ProductBean">
       select *
-      from easybuy_product
+      from easybuy_product p
+      inner join easybuy_product_category c on p.categoryId = c.categoryId
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from easybuy_product
     where productId = #{productid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Product" >
     insert into easybuy_product (productId, productName, productDescription, 
       productPrice, productStock, categoryId, 
       productFileName, isDelete)
@@ -37,7 +38,7 @@
       #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, 
       #{productfilename,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Product" >
     insert into easybuy_product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="productid != null" >
@@ -92,7 +93,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.Product" >
     update easybuy_product
     <set >
       <if test="productname != null" >
@@ -119,7 +120,7 @@
     </set>
     where productId = #{productid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.Product" >
     update easybuy_product
     set productName = #{productname,jdbcType=VARCHAR},
       productDescription = #{productdescription,jdbcType=VARCHAR},

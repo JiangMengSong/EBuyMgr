@@ -1,6 +1,6 @@
 package org.syqb.ebuymgr.pojo;
 
-public class EasyBuyProduct {
+public class Product {
     private Integer productid;
 
     private String productname;
@@ -15,7 +15,7 @@ public class EasyBuyProduct {
 
     private Integer isdelete;
 
-    private EasyBuyProductCategory category;
+    private Category category;
 
     public Integer getProductid() {
         return productid;
@@ -73,11 +73,11 @@ public class EasyBuyProduct {
         this.isdelete = isdelete;
     }
 
-    public EasyBuyProductCategory getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(EasyBuyProductCategory category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

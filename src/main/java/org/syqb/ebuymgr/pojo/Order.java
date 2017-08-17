@@ -2,10 +2,10 @@ package org.syqb.ebuymgr.pojo;
 
 import java.util.Date;
 
-public class EasyBuyOrder {
+public class Order {
     private Integer orderid;
 
-    private EasyBuyUser user;
+    private User user;
 
     private Date ordercreatetime;
 
@@ -21,11 +21,11 @@ public class EasyBuyOrder {
         this.orderid = orderid;
     }
 
-    public EasyBuyUser getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(EasyBuyUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 

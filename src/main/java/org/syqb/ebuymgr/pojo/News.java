@@ -1,6 +1,6 @@
 package org.syqb.ebuymgr.pojo;
 
-public class EasyBuyNews {
+public class News {
     private Integer newsid;
 
     private String newstitle;

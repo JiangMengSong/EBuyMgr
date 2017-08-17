@@ -1,6 +1,6 @@
 package org.syqb.ebuymgr.pojo;
 
-public class EasyBuyUser {
+public class User {
     private Integer userid;
 
     private String loginname;

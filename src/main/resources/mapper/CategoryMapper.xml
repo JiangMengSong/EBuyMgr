@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyProductCategoryMapper" >
-  <resultMap id="CategoryBean" type="org.syqb.ebuymgr.pojo.EasyBuyProductCategory" >
+<mapper namespace="org.syqb.ebuymgr.mapper.CategoryMapper" >
+  <resultMap id="CategoryBean" type="org.syqb.ebuymgr.pojo.Category" >
     <id column="categoryId" property="categoryid" jdbcType="INTEGER" />
     <result column="categoryName" property="categoryname" jdbcType="VARCHAR" />
     <result column="categoryParentId" property="categoryparentid" jdbcType="INTEGER" />
@@ -17,17 +17,21 @@
     from easybuy_product_category
     where categoryId = #{categoryid,jdbcType=INTEGER}
   </select>
+  <select id="getCategory" resultMap="CategoryBean">
+      select *
+      from easybuy_product_category
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from easybuy_product_category
     where categoryId = #{categoryid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProductCategory" >
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Category" >
     insert into easybuy_product_category (categoryId, categoryName, categoryParentId, 
       categoryType, iconClass)
     values (#{categoryid,jdbcType=INTEGER}, #{categoryname,jdbcType=VARCHAR}, #{categoryparentid,jdbcType=INTEGER}, 
       #{categorytype,jdbcType=INTEGER}, #{iconclass,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProductCategory" >
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Category" >
     insert into easybuy_product_category
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="categoryid != null" >
@@ -64,7 +68,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProductCategory" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.Category" >
     update easybuy_product_category
     <set >
       <if test="categoryname != null" >
@@ -82,7 +86,7 @@
     </set>
     where categoryId = #{categoryid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProductCategory" >
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.Category" >
     update easybuy_product_category
     set categoryName = #{categoryname,jdbcType=VARCHAR},
       categoryParentId = #{categoryparentid,jdbcType=INTEGER},

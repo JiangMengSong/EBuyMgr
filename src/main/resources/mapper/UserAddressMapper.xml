@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyUserAddressMapper" >
-  <resultMap id="UserAddressBean" type="org.syqb.ebuymgr.pojo.EasyBuyUserAddress" >
+<mapper namespace="org.syqb.ebuymgr.mapper.UserAddressMapper" >
+  <resultMap id="UserAddressBean" type="org.syqb.ebuymgr.pojo.UserAddress" >
     <id column="addressId" property="addressid" jdbcType="INTEGER" />
     <result column="addressName" property="addressname" jdbcType="VARCHAR" />
     <result column="addressCreateTime" property="addresscreatetime" jdbcType="TIMESTAMP" />
     <result column="isDefault" property="isdefault" jdbcType="INTEGER" />
     <result column="addressRemark" property="addressremark" jdbcType="VARCHAR" />
-    <collection property="user" resultMap="org.syqb.ebuymgr.mapper.EasyBuyUserMapper.UserBean"/>
+    <collection property="user" resultMap="org.syqb.ebuymgr.mapper.UserMapper.UserBean"/>
   </resultMap>
   <sql id="Base_Column_List" >
     addressId, userId, addressName, addressCreateTime, isDefault, addressRemark
@@ -22,7 +22,7 @@
     delete from easybuy_user_address
     where addressId = #{addressid,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUserAddress" >
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.UserAddress" >
     insert into easybuy_user_address (addressId, userId, addressName, 
       addressCreateTime, isDefault, addressRemark
       )
@@ -30,7 +30,7 @@
       #{addresscreatetime,jdbcType=TIMESTAMP}, #{isdefault,jdbcType=INTEGER}, #{addressremark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUserAddress" >
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.UserAddress" >
     insert into easybuy_user_address
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="addressid != null" >
@@ -73,7 +73,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUserAddress" >
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.UserAddress" >
     update easybuy_user_address
     <set >
       <if test="userid != null" >
@@ -94,7 +94,7 @@
     </set>
     where addressId = #{addressid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.EasyBuyUserAddress" >
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.UserAddress" >
     update easybuy_user_address
     set userId = #{userid,jdbcType=INTEGER},
       addressName = #{addressname,jdbcType=VARCHAR},

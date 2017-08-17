@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.syqb.ebuymgr.mapper.CommentMapper" >
+  <resultMap id="CommentBean" type="org.syqb.ebuymgr.pojo.Comment" >
+    <id column="commentId" property="commentid" jdbcType="INTEGER" />
+    <result column="commentContent" property="commentcontent" jdbcType="VARCHAR" />
+    <result column="commentDate" property="commentdate" jdbcType="TIMESTAMP" />
+    <result column="replyContent" property="replycontent" jdbcType="VARCHAR" />
+    <result column="replyDate" property="replydate" jdbcType="TIMESTAMP" />
+    <collection property="user" resultMap="org.syqb.ebuymgr.mapper.UserMapper.UserBean"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    commentId, commentContent, commentDate, userId, replyContent, replyDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="CommentBean" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from easybuy_comment
+    where commentId = #{commentid,jdbcType=INTEGER}
+  </select>
+    <select id="getCommentByPage" resultMap="CommentBean">
+        select *
+        from easybuy_comment
+        inner join easybuy_user on easybuy_comment.userId = easybuy_user.userId
+        limit #{pageIndex},#{pageSize}
+    </select>
+    <select id="getCommentCount" resultType="java.lang.Integer">
+        select count(*) from easybuy_comment
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from easybuy_comment
+    where commentId = #{commentid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Comment" >
+    insert into easybuy_comment (commentId, commentContent, commentDate, 
+      userId, replyContent, replyDate
+      )
+    values (#{commentid,jdbcType=INTEGER}, #{commentcontent,jdbcType=VARCHAR}, #{commentdate,jdbcType=TIMESTAMP}, 
+      #{userid,jdbcType=INTEGER}, #{replycontent,jdbcType=VARCHAR}, #{replydate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.Comment" >
+    update easybuy_comment
+    <set >
+      <if test="commentcontent != null" >
+        commentContent = #{commentcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentdate != null" >
+        commentDate = #{commentdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="replycontent != null" >
+        replyContent = #{replycontent,jdbcType=VARCHAR},
+      </if>
+      <if test="replydate != null" >
+        replyDate = #{replydate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where commentId = #{commentid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -22,6 +22,7 @@
     <mvc:resources mapping="statics/images/**" location="/WEB-INF/statics/images/"/>
     <mvc:resources mapping="statics/scripts/**" location="/WEB-INF/statics/scripts/"/>
     <mvc:resources mapping="statics/css/**" location="/WEB-INF/statics/css/"/>
+    <mvc:resources mapping="statics/html/**" location="/WEB-INF/statics/html/"/>
     <!--<mvc:resources mapping="/html/**" location="/html/" />-->
 
     <!--定义跳转的文件的前后缀 ，视图模式配置-->

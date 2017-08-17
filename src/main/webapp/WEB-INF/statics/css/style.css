@@ -95,7 +95,7 @@ a:hover, a:active { color:#3a52a8; text-decoration:underline; }
 #productAdd table td span.error { display:inline-block; border:1px solid #ff835a; background-color:#ffe8e0; }
 
 #main { padding:10px 0;}
-#main .lefter { float:left; width:180px;height:400px; }
+#main .lefter { float:left; width:180px;height:300px; }
 #main #menu-mng .box dl dd{display:block}
 #main .lefter .box { border:1px solid #c3c3c3; }
 #main .lefter h2 { background:#fff0d9; font-size:14px; color:#853200; padding:2px 8px; }

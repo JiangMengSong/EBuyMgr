@@ -22,6 +22,12 @@ public class UserController {
         return session.getAttribute("users") == null ? "user/login" : "house/index";
     }
 
+    // 后台跳转
+    @RequestMapping(value = "/toManager.html", produces = "text/html;charset=utf-8")
+    public String toManager() {
+        return "manager/index";
+    }
+
     //登录
     @RequestMapping(value = "/doLogin.html", produces = "text/html;charset=utf-8")
     @ResponseBody

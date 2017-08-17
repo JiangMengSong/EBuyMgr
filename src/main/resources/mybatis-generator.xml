@@ -76,9 +76,9 @@
                <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
             <!--<columnOverride column="productId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
-        <table tableName="easybuy_product_category" domainObjectName="EasyBuyProductCategory" enableCountByExample="false"
+        <table tableName="easybuy_comment" domainObjectName="Comment" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
-            <columnOverride column="categoryId" javaType="java.lang.Integer"/>
+            <columnOverride column="commentId" javaType="java.lang.Integer"/>
         </table>
     </context>
 </generatorConfiguration>

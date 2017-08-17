@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.syqb.ebuymgr.mapper.EasyBuyProductMapper" >
-  <resultMap id="ProductBean" type="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
+  <resultMap id="BaseResultMap" type="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
     <id column="productId" property="productid" jdbcType="INTEGER" />
     <result column="productName" property="productname" jdbcType="VARCHAR" />
     <result column="productDescription" property="productdescription" jdbcType="VARCHAR" />
     <result column="productPrice" property="productprice" jdbcType="REAL" />
     <result column="productStock" property="productstock" jdbcType="INTEGER" />
-    <result column="categoryLevel1Id" property="categorylevel1id" jdbcType="INTEGER" />
-    <result column="categoryLevel2Id" property="categorylevel2id" jdbcType="INTEGER" />
-    <result column="categoryLevel3Id" property="categorylevel3id" jdbcType="INTEGER" />
     <result column="productFileName" property="productfilename" jdbcType="VARCHAR" />
     <result column="isDelete" property="isdelete" jdbcType="INTEGER" />
+    <collection property="category" resultMap="org.syqb.ebuymgr.mapper.EasyBuyProductCategoryMapper.CategoryBean"/>
   </resultMap>
   <sql id="Base_Column_List" >
-    productId, productName, productDescription, productPrice, productStock, categoryLevel1Id, 
-    categoryLevel2Id, categoryLevel3Id, productFileName, isDelete
+    productId, productName, productDescription, productPrice, productStock, categoryId, 
+    productFileName, isDelete
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ProductBean" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from easybuy_product
@@ -29,13 +27,11 @@
   </delete>
   <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
     insert into easybuy_product (productId, productName, productDescription, 
-      productPrice, productStock, categoryLevel1Id, 
-      categoryLevel2Id, categoryLevel3Id, productFileName, 
-      isDelete)
+      productPrice, productStock, categoryId, 
+      productFileName, isDelete)
     values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR}, 
-      #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categorylevel1id,jdbcType=INTEGER}, 
-      #{categorylevel2id,jdbcType=INTEGER}, #{categorylevel3id,jdbcType=INTEGER}, #{productfilename,jdbcType=VARCHAR}, 
-      #{isdelete,jdbcType=INTEGER})
+      #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, 
+      #{productfilename,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.EasyBuyProduct" >
     insert into easybuy_product
@@ -55,14 +51,8 @@
       <if test="productstock != null" >
         productStock,
       </if>
-      <if test="categorylevel1id != null" >
-        categoryLevel1Id,
-      </if>
-      <if test="categorylevel2id != null" >
-        categoryLevel2Id,
-      </if>
-      <if test="categorylevel3id != null" >
-        categoryLevel3Id,
+      <if test="categoryid != null" >
+        categoryId,
       </if>
       <if test="productfilename != null" >
         productFileName,
@@ -87,14 +77,8 @@
       <if test="productstock != null" >
         #{productstock,jdbcType=INTEGER},
       </if>
-      <if test="categorylevel1id != null" >
-        #{categorylevel1id,jdbcType=INTEGER},
-      </if>
-      <if test="categorylevel2id != null" >
-        #{categorylevel2id,jdbcType=INTEGER},
-      </if>
-      <if test="categorylevel3id != null" >
-        #{categorylevel3id,jdbcType=INTEGER},
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=INTEGER},
       </if>
       <if test="productfilename != null" >
         #{productfilename,jdbcType=VARCHAR},
@@ -119,14 +103,8 @@
       <if test="productstock != null" >
         productStock = #{productstock,jdbcType=INTEGER},
       </if>
-      <if test="categorylevel1id != null" >
-        categoryLevel1Id = #{categorylevel1id,jdbcType=INTEGER},
-      </if>
-      <if test="categorylevel2id != null" >
-        categoryLevel2Id = #{categorylevel2id,jdbcType=INTEGER},
-      </if>
-      <if test="categorylevel3id != null" >
-        categoryLevel3Id = #{categorylevel3id,jdbcType=INTEGER},
+      <if test="categoryid != null" >
+        categoryId = #{categoryid,jdbcType=INTEGER},
       </if>
       <if test="productfilename != null" >
         productFileName = #{productfilename,jdbcType=VARCHAR},
@@ -143,9 +121,7 @@
       productDescription = #{productdescription,jdbcType=VARCHAR},
       productPrice = #{productprice,jdbcType=REAL},
       productStock = #{productstock,jdbcType=INTEGER},
-      categoryLevel1Id = #{categorylevel1id,jdbcType=INTEGER},
-      categoryLevel2Id = #{categorylevel2id,jdbcType=INTEGER},
-      categoryLevel3Id = #{categorylevel3id,jdbcType=INTEGER},
+      categoryId = #{categoryid,jdbcType=INTEGER},
       productFileName = #{productfilename,jdbcType=VARCHAR},
       isDelete = #{isdelete,jdbcType=INTEGER}
     where productId = #{productid,jdbcType=INTEGER}

@@ -11,15 +11,11 @@ public class EasyBuyProduct {
 
     private Integer productstock;
 
-    private Integer categorylevel1id;
-
-    private Integer categorylevel2id;
-
-    private Integer categorylevel3id;
-
     private String productfilename;
 
     private Integer isdelete;
+
+    private EasyBuyProductCategory category;
 
     public Integer getProductid() {
         return productid;
@@ -34,7 +30,7 @@ public class EasyBuyProduct {
     }
 
     public void setProductname(String productname) {
-        this.productname = productname == null ? null : productname.trim();
+        this.productname = productname;
     }
 
     public String getProductdescription() {
@@ -42,7 +38,7 @@ public class EasyBuyProduct {
     }
 
     public void setProductdescription(String productdescription) {
-        this.productdescription = productdescription == null ? null : productdescription.trim();
+        this.productdescription = productdescription;
     }
 
     public Float getProductprice() {
@@ -61,36 +57,12 @@ public class EasyBuyProduct {
         this.productstock = productstock;
     }
 
-    public Integer getCategorylevel1id() {
-        return categorylevel1id;
-    }
-
-    public void setCategorylevel1id(Integer categorylevel1id) {
-        this.categorylevel1id = categorylevel1id;
-    }
-
-    public Integer getCategorylevel2id() {
-        return categorylevel2id;
-    }
-
-    public void setCategorylevel2id(Integer categorylevel2id) {
-        this.categorylevel2id = categorylevel2id;
-    }
-
-    public Integer getCategorylevel3id() {
-        return categorylevel3id;
-    }
-
-    public void setCategorylevel3id(Integer categorylevel3id) {
-        this.categorylevel3id = categorylevel3id;
-    }
-
     public String getProductfilename() {
         return productfilename;
     }
 
     public void setProductfilename(String productfilename) {
-        this.productfilename = productfilename == null ? null : productfilename.trim();
+        this.productfilename = productfilename;
     }
 
     public Integer getIsdelete() {
@@ -99,5 +71,13 @@ public class EasyBuyProduct {
 
     public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
+    }
+
+    public EasyBuyProductCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(EasyBuyProductCategory category) {
+        this.category = category;
     }
 }

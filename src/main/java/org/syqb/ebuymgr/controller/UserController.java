@@ -51,6 +51,7 @@ public class UserController {
         JSONObject result = new JSONObject();
         if (users == null ) result.put("flag", false);
         else{
+            users.setUsertype(0);
             int sum= userService.insert(users);
             if(sum>0){
                 result.put("flag",true);

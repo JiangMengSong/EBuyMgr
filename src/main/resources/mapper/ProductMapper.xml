@@ -15,6 +15,18 @@
     productId, productName, productDescription, productPrice, productStock, categoryId, 
     productFileName, isDelete
   </sql>
+    <sql id="CategoryInnerJoin">
+        inner join easybuy_product_category
+        on easybuy_product.categoryId = easybuy_product_category.categoryId
+        <where>
+            <if test="categoryId != null and categoryId > 0">
+                and easybuy_product.categoryId = #{categoryId} or easybuy_product.categoryId in(
+                    select categoryId from easybuy_product_category
+                    where categoryParentId = #{categoryId}
+                )
+            </if>
+        </where>
+    </sql>
   <select id="selectByPrimaryKey" resultMap="ProductBean" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -22,11 +34,15 @@
     where productId = #{productid,jdbcType=INTEGER}
   </select>
   <select id="getProduct" resultMap="ProductBean">
-      select *
-      from easybuy_product p
-      inner join easybuy_product_category c on p.categoryId = c.categoryId
+      select * from easybuy_product
+      <include refid="CategoryInnerJoin"/>
+      limit #{pageIndex} , #{pageSize}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="getProductCount" resultType="org.syqb.ebuymgr.pojo.Product">
+        select count(*) from easybuy_product
+        <include refid="CategoryInnerJoin"/>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from easybuy_product
     where productId = #{productid,jdbcType=INTEGER}
   </delete>

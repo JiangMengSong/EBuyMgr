@@ -29,8 +29,21 @@
     <img width="100%" height="150" src="images/banner.jpg" alt="welcome">
 </div>
 <div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/scripts/images/logo.gif" /></div>
-    <div class="help"><a href="shopping.html" id="shoppingBag" class="shopping">购物车X件</a><a href="login.html">登录</a><a class="button" id="logout" href="javascript:void(0);">注销</a><a href="register.html">注册</a><a href="guestbook.html">留言</a><a href="manage/index.html">后台管理</a></div>
+    <div id="logo"><img src="../../statics/images/logo.gif" /></div>
+    <div class="help">
+        <a href="shopping.html" id="shoppingBag" class="shopping">
+            购物车X件
+        </a>
+        <c:if test="${empty users}">
+            <a href="login.html">登录</a>
+            <a href="register.html">注册</a>
+        </c:if>
+        <c:if test="${not empty users}">
+            <a class="button" id="logout" href="javascript:void(0);">注销</a>
+        </c:if>
+        <c:if test="${users.usertype == 1}">
+            <a href="manage/index.html">后台管理</a></div>
+        </c:if>
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="#">首页</a></li>

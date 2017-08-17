@@ -1,7 +1,11 @@
 package org.syqb.ebuymgr.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.syqb.ebuymgr.common.Pages;
+import org.syqb.ebuymgr.pojo.Category;
+import org.syqb.ebuymgr.pojo.Product;
 import org.syqb.ebuymgr.service.product.CategoryService;
 import org.syqb.ebuymgr.service.product.NewsService;
 import org.syqb.ebuymgr.service.product.ProductService;
@@ -26,11 +30,13 @@ public class ProductController {
         return "redirect:/product/doIndex.html";
     }
 
-    @RequestMapping(value = "/doIndex.html",produces = "text/html;charset=utf-8")
-    public String doIndex(HttpServletRequest request){
+    @RequestMapping(value = "/doIndex.html/{pageIndex}",produces = "text/html;charset=utf-8")
+    public String doIndex(HttpServletRequest request, Pages<Product> pages,@PathVariable Integer pageIndex,Integer categoryId){
+
         request.setAttribute("newsList",newsService.getNews());
         request.setAttribute("categoryList", categoryService.getCategory());
         request.setAttribute("productList", productService.getProduct());
+        request.setAttribute("pages",pages);
         return "product/index";
     }
 }

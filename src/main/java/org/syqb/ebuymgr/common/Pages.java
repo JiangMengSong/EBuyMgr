@@ -3,7 +3,7 @@ package org.syqb.ebuymgr.common;
 import java.util.List;
 
 public class Pages<T> {
-    private Integer pageSize = 5; // 每页显示条数
+    private Integer pageSize = 8; // 每页显示条数
     private Integer pageIndex = 1; // 当前页码
     private Integer totalCount; // 总条数
     private Integer totalPage; // 总页数

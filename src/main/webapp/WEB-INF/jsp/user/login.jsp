@@ -16,6 +16,11 @@
     <script src="../../js/jquery-3.2.1.js"></script>
     <script>
         $(function () {
+
+            $("#regBtn").click(function () {
+                location.href="toRegister.html";
+            });
+
             $("#loginBtn").click(function () {
                 $.ajax({
                     url: "/user/doLogin.html",
@@ -67,6 +72,7 @@
                         <td>
                             <label class="ui-green">
                                 <input type="button" id="loginBtn" value="立即登录">
+                                <input type="button" id="regBtn" value="立即注册">
                             </label>
                         </td>
                     </tr>

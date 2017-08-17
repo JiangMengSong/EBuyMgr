@@ -16,4 +16,9 @@ public class EasyBuyUserServiceImpl implements EasyBuyUserService {
     public EasyBuyUser selectByLoginName(String loginName) {
         return easyBuyUserMapper.selectByLoginName(loginName);
     }
+
+    @Override
+    public int insert(EasyBuyUser user) {
+        return easyBuyUserMapper.insert(user);
+    }
 }

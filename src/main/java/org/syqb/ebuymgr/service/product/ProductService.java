@@ -9,4 +9,6 @@ public interface ProductService {
     List<Product> getProduct(Pages<Product> pages,Integer categoryId);
 
     int getProductCount(Integer categoryId);
+
+    Product getProById(int id);
 }

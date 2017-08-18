@@ -54,4 +54,17 @@ public class ProductController {
         request.setAttribute("pages", pages);
         return "manager/product/productList";
     }
+
+    //商品详情
+    @RequestMapping(value = "/proDetail.html/{productid}", produces = "text/html;charset=utf-8")
+    public String getProductById(HttpServletRequest request,int productid) {
+        Product pro=productService.getProById(productid);
+        if(pro!=null) {
+            request.setAttribute("pro", pro);
+            return "product/product-view";
+        }
+        else {
+            return "product/product-view";
+        }
+    }
 }

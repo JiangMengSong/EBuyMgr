@@ -124,4 +124,13 @@ public class UserController {
         if (userid != null && userService.delUser(userid) > 0) result.put("flag",true);
         return result.toString();
     }
+
+    //注销
+    @RequestMapping(value = "/retUser.html", produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String retUser(HttpSession session){
+        JSONObject result = new JSONObject();
+        if (session.getAttribute("users") != null) session.removeAttribute("users");
+        return result.toString();
+    }
 }

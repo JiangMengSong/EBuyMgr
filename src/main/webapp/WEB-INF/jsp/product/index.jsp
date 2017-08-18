@@ -19,6 +19,9 @@
             location.href = "/product/doIndex.html/" + pageIndex + "?categoryId=" + categoryId
         }
     </script>
+
+
+
     ${jquery_3}${js_common}${js_function}${cs_stylee}
 </head>
 <body>
@@ -120,7 +123,7 @@
                     <li>
                         <dl>
                             <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
-                            <dd class="title"><a href="product-view.html" target="_self">${product.productname}</a></dd>
+                            <dd class="title"><a href="product-view.html/${product.productname}" target="_self">${product.productname}</a></dd>
                             <dd class="price">￥${product.productprice}</dd>
                         </dl>
                     </li>
@@ -163,5 +166,23 @@
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号
 </div>
+
+<script>
+    //注销
+    $(function () {
+        $("#logout").click(function () {
+            if (confirm("是否确认注销")) {
+                $.ajax({
+                    url: "/user/retUser.html",
+                    success: function () {
+                        alert("注销成功");
+                        location.href = '/user/toLogin.html'
+                    }
+                })
+            }
+
+        });
+    })
+</script>
 </body>
 </html>

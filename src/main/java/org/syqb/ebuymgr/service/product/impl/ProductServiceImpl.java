@@ -24,4 +24,9 @@ public class ProductServiceImpl implements ProductService {
     public int getProductCount(Integer categoryId) {
         return productMapper.getProductCount(categoryId);
     }
+
+    @Override
+    public Product getProById(int id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
 }

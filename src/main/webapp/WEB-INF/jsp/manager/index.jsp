@@ -12,12 +12,12 @@
     <title>后台管理 - 易买网</title>
     <div id="header" class="wrap">
         <div id="logo"><img src="../../statics/images/logo.gif"/></div>
-        <div class="help"><a href="/product/toIndex.html">返回前台页面</a></div>
+        <div class="help"><a href="/doIndex.html">返回前台页面</a></div>
         <div class="navbar">
             <ul class="clearfix">
                 <li class="current"><a href="/user/toManager.html">首页</a></li>
                 <li><a href="/user/getUsers.html">用户</a></li>
-                <li><a href="product.html">商品</a></li>
+                <li><a href="/product/getProduct.html">商品</a></li>
                 <li><a href="order.html">订单</a></li>
                 <li><a href="/mgr/comment/getComment.html">留言</a></li>
                 <li><a href="/mgr/news/getNews.html">新闻</a></li>

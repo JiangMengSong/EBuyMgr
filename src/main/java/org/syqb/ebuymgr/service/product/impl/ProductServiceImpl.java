@@ -15,8 +15,13 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
 
     @Override
-    public List<Product> getProduct(Pages<Product> pages) {
+    public List<Product> getProduct(Pages<Product> pages,Integer categoryId) {
         if (null == pages) return null;
-        return productMapper.getProduct((pages.getPageIndex() - 1) * pages.getPageSize(), pages.getPageSize(), 1);
+        return productMapper.getProduct((pages.getPageIndex() - 1) * pages.getPageSize(), pages.getPageSize(), categoryId);
+    }
+
+    @Override
+    public int getProductCount(Integer categoryId) {
+        return productMapper.getProductCount(categoryId);
     }
 }

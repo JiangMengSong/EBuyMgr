@@ -24,17 +24,36 @@ public class ProductController {
     @Resource(name = "newsService")
     NewsService newsService;
 
-    @RequestMapping(value = "/toIndex.html", produces = "text/html;charset=utf-8")
-    public String toIndex() {
-        return "redirect:/product/doIndex.html/1";
+    @RequestMapping(value = "/doIndex.html", produces = "text/html;charset=utf-8")
+    public String doIndex() {
+        return "redirect:/product/doIndex.html/1/0";
     }
 
     @RequestMapping(value = "/doIndex.html/{pageIndex}", produces = "text/html;charset=utf-8")
-    public String doIndex(HttpServletRequest request, Pages<Product> pages, Integer categoryId) {
+    public String doIndex(@PathVariable Integer pageIndex) {
+        return "redirect:/product/doIndex.html/"+pageIndex+"/0";
+    }
+
+    @RequestMapping(value = "/doIndex.html/{pageIndex}/{categoryId}", produces = "text/html;charset=utf-8")
+    public String doIndex(HttpServletRequest request, Pages<Product> pages,@PathVariable Integer categoryId) {
         request.setAttribute("newsList", newsService.getNewsByDate());
         request.setAttribute("categoryList", categoryService.getCategory());
-        request.setAttribute("productList", productService.getProduct(pages));
+        request.setAttribute("productList", productService.getProduct(pages,categoryId));
         request.setAttribute("pages", pages);
         return "product/index";
+    }
+
+    @RequestMapping(value = "/getProduct.html", produces = "text/html;charset=utf-8")
+    public String getProduct() {
+        return "redirect:/product/getProduct.html/1";
+    }
+
+    @RequestMapping(value = "/getProduct.html/{pageIndex}", produces = "text/html;charset=utf-8")
+    public String getProduct(HttpServletRequest request, Pages<Product> pages) {
+        pages.setPageSize(7);
+        pages.setTotalCount(productService.getProductCount(0));
+        pages.setPageList(productService.getProduct(pages,0));
+        request.setAttribute("pages", pages);
+        return "manager/product/productList";
     }
 }

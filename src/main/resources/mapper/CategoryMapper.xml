@@ -17,9 +17,23 @@
         from easybuy_product_category
         where categoryId = #{categoryid,jdbcType=INTEGER}
     </select>
-    <select id="getCategory" resultMap="CategoryBean">
+    <select id="getCategory" resultType="org.syqb.ebuymgr.pojo.Category">
         select *
         from easybuy_product_category
+        <if test="pageIndex != null and pageSize != null and pageSize > 0">
+            where categoryParentId = 0
+            limit #{pageIndex},#{pageSize}
+        </if>
+    </select>
+    <select id="getCategoryByParentId" resultType="org.syqb.ebuymgr.pojo.Category">
+        select *
+        from easybuy_product_category
+        where categoryParentId = #{parentId}
+    </select>
+    <select id="getCategoruCount" resultType="java.lang.Integer">
+        select count(*)
+        from easybuy_product_category
+        where categoryParentId = 0
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from easybuy_product_category

@@ -1,5 +1,6 @@
 package org.syqb.ebuymgr.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.syqb.ebuymgr.pojo.Category;
 
 import java.util.List;
@@ -17,5 +18,9 @@ public interface CategoryMapper {
 
     int updateByPrimaryKey(Category record);
 
-    List<Category> getCategory();
+    List<Category> getCategory(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSi);
+
+    List<Category> getCategoryByParentId(@Param("parentId")Integer parentId);
+
+    int getCategoruCount();
 }

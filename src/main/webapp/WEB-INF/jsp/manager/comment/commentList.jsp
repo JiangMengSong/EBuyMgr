@@ -12,14 +12,14 @@
     <title>后台管理 - 易买网</title>
     <script>
         function goToPage(pageIndex) {
-            location.href = "/mgr/comment/getComment.html/" + pageIndex;
+            location.href="/mgr/comment/getComment.html/"+pageIndex;
         }
     </script>
 </head>
 <body>
 <div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/images/logo.gif"/></div>
-    <div class="help"><a href="/product/toIndex.html">返回前台页面</a></div>
+    <div id="logo"><img src="../../statics/images/logo.gif" /></div>
+    <div class="help"><a href="/doIndex.html">返回前台页面</a></div>
     <div class="navbar">
         <ul class="clearfix">
             <li><a href="/user/toManager.html">首页</a></li>
@@ -31,9 +31,9 @@
         </ul>
     </div>
 </div>
-<%@include file="../common/title.jsp" %>
+<%@include file="../common/title.jsp"%>
 <div id="main" class="wrap">
-    <%@include file="../common/left.jsp" %>
+    <%@include file="../common/left.jsp"%>
     <div class="main">
         <h2>留言管理</h2>
         <div class="manage">
@@ -51,7 +51,7 @@
                         <td class="w1 c">${comment.user.username}</td>
                         <td>${comment.commentcontent}</td>
                         <td class="w1 c">
-                            <c:if test="${null != comment.replycontent &&  comment.replycontent != ''}">
+                            <c:if test="${not empty comment.replycontent &&  comment.replycontent != ''}">
                                 已回复
                             </c:if>
                         </td>
@@ -62,10 +62,10 @@
                     </tr>
                 </c:forEach>
             </table>
-            <%@include file="../common/pager.jsp" %>
         </div>
     </div>
     <div class="clear"></div>
+    <%@include file="../common/pager.jsp"%>
 </div>
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号

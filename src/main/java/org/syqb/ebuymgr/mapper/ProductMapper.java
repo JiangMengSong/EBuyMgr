@@ -20,5 +20,5 @@ public interface ProductMapper {
 
     List<Product> getProduct(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize, @Param("categoryId") Integer categoryId);
 
-    List<Product> getProductCount(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize, @Param("categoryId") Integer categoryId);
+    int getProductCount(@Param("categoryId") Integer categoryId);
 }

@@ -38,7 +38,7 @@
         <include refid="CategoryInnerJoin"/>
         limit #{pageIndex} , #{pageSize}
     </select>
-    <select id="getProductCount" resultType="org.syqb.ebuymgr.pojo.Product">
+    <select id="getProductCount" resultType="java.lang.Integer">
         select count(*) from easybuy_product
         <include refid="CategoryInnerJoin"/>
     </select>

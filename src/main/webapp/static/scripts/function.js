@@ -399,14 +399,14 @@ $(function () {
     });
     $("#shopping").find("#total").text("总计：￥" + totalPrice());
     //注销
-    $("#logout").click(function () {
-        if (confirm("购物车中尚有未结算的商品，是否结账？")) {
-            location.href = "shopping.html";
-        } else {
-            location.href = "index.html";
-            return false;
-        }
-    });
+    // $("#logout").click(function () {
+    //     if (confirm("购物车中尚有未结算的商品，是否结账？")) {
+    //         location.href = "shopping.html";
+    //     } else {
+    //         location.href = "index.html";
+    //         return false;
+    //     }
+    // });
     //轮换广告
     var index = 0;
     setInterval(function () {

@@ -32,15 +32,15 @@
             购物车X件
         </a>
         <c:if test="${empty users}">
-            <a href="login.html">登录</a>
-            <a href="register.html">注册</a>
+            <a href="/user/toLogin.html">登录</a>
+            <a href="/user/toRegister.html">注册</a>
         </c:if>
         <c:if test="${not empty users}">
             <a class="button" id="logout" href="javascript:void(0);">注销</a>
         </c:if>
         <c:if test="${users.usertype == 1}">
-        <a href="/user/toManager.html">后台管理</a></div>
-    </c:if>
+            <a href="/user/toManager.html">后台管理</a></div>
+        </c:if>
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="#">首页</a></li>
@@ -79,7 +79,7 @@
             <h2>商品分类</h2>
             <dl>
                 <c:forEach items="${categoryList}" var="category">
-                    <c:if test="${category.categorytype == 1}">
+                    <c:if test="${category.categoryparentid == 0}">
                         <dt>${category.categoryname}</dt>
                         <c:forEach items="${categoryList}" var="categorys">
                             <c:if test="${categorys.categoryparentid == category.categoryid}">

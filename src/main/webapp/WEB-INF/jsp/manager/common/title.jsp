@@ -1,11 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<script type="text/javascript" src="../../../statics/scripts/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="../../../statics/scripts/function.js"></script>
-<script type="text/javascript" src="../../../statics/scripts/common.js"></script>
-<link type="text/css" rel="stylesheet" href="../../../statics/css/style.css"/>
-
+<%@include file="taglib.jsp"%>
+${cs_stylee}${jquery_3}${js_common}${js_function}
 <div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/images/logo.gif"/></div>
+    <div id="logo"><img src="${project}/static/images/logo.gif"/></div>
     <div class="help"><a href="/product/doIndex.html">返回前台页面</a></div>
     <div class="navbar">
         <ul class="clearfix">

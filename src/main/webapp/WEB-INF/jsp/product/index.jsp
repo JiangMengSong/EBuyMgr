@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="../common/taglib.jsp"%>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -10,14 +11,7 @@
 <html>
 <head>
     <title>易买网 - 首页</title>
-    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
-    <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../../statics/scripts/function.js"></script>
-    <script type="text/javascript" src="../../statics/scripts/common.js"></script>
     <script>
-        <%--<c:if test="${empty users}">--%>
-        <%--location.href = "/product/doIndex.html";--%>
-        <%--</c:if>--%>
         // 分页带条件跳转
         function goToPage(pageIndex,categoryId) {
             if (isEmpty(pageIndex)) pageIndex = 1;
@@ -25,13 +19,14 @@
             location.href = "/product/doIndex.html/" + pageIndex + "?categoryId=" + categoryId
         }
     </script>
+    ${jquery_3}${js_common}${js_function}${cs_stylee}
 </head>
 <body>
 <div id="welcomeImage">
-    <img width="100%" height="150" src="images/banner.jpg" alt="welcome">
+    <img width="100%" height="150" src="${project}/static/images/banner.jpg" alt="welcome">
 </div>
 <div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/images/logo.gif"/></div>
+    <div id="logo"><img src="${img_logo}"/></div>
     <div class="help">
         <a href="shopping.html" id="shoppingBag" class="shopping">
             购物车X件
@@ -101,7 +96,7 @@
         <div class="last-view">
             <h2>最近浏览</h2>
             <dl class="clearfix">
-                <dt><img src="../../statics/images/product/10_small.jpg"/></dt>
+                <dt><img src="${project}/static/images/product/10_small.jpg"/></dt>
                 <dd><a href="product-view.html" target="_self">利仁2018M福满堂电饼铛 好用实惠</a><a href="product-view.html"></a>
                 </dd>
                 <dt>&nbsp;</dt>
@@ -113,10 +108,10 @@
         <div class="price-off">
             <div class="slideBox">
                 <ul id="slideBox">
-                    <li><img src="../../statics/images/product/banner_1.jpg"/></li>
-                    <li><img src="../../statics/images/product/banner_2.jpg"/></li>
-                    <li><img src="../../statics/images/product/banner_3.jpg"/></li>
-                    <li><img src="../../statics/images/product/banner_4.jpg"/></li>
+                    <li><img src="${project}/static/images/product/banner_1.jpg"/></li>
+                    <li><img src="${project}/static/images/product/banner_2.jpg"/></li>
+                    <li><img src="${project}/static/images/product/banner_3.jpg"/></li>
+                    <li><img src="${project}/static/images/product/banner_4.jpg"/></li>
                 </ul>
             </div>
             <h2>商品列表</h2>

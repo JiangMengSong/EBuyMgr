@@ -6,15 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="../common/taglib.jsp"%>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>易买网 - 首页</title>
-    <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
-    <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="../../statics/scripts/My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="../../statics/scripts/function.js"></script>
-
+    ${jquery_3}${js_common}${js_function}${cs_stylee}
     <script>
         $(function () {
             $("#resBtn").click(function () {

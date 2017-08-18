@@ -50,6 +50,7 @@ public class ProductController {
         pages.setPageSize(7);
         pages.setTotalCount(productService.getProductCount(0));
         pages.setPageList(productService.getProduct(pages,0));
+        request.setAttribute("selUrl",2);
         request.setAttribute("pages", pages);
         return "manager/product/productList";
     }

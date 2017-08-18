@@ -1,6 +1,9 @@
 package org.syqb.ebuymgr.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.syqb.ebuymgr.pojo.OrderDetail;
+
+import java.util.List;
 
 public interface OrderDetailMapper {
     int deleteByPrimaryKey(Integer orderdetailid);
@@ -14,4 +17,6 @@ public interface OrderDetailMapper {
     int updateByPrimaryKeySelective(OrderDetail record);
 
     int updateByPrimaryKey(OrderDetail record);
+
+    List<OrderDetail> getOrderDetailByOrderId(@Param("orderId")Integer orderId);
 }

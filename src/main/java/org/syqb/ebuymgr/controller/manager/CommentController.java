@@ -25,6 +25,7 @@ public class CommentController {
         pages.setPageSize(7);
         pages.setTotalCount(commentService.getCommentCount());
         pages.setPageList(commentService.getCommentByPage(pages));
+        request.setAttribute("selUrl",4);
         request.setAttribute("pages", pages);
         return "manager/comment/commentList";
     }

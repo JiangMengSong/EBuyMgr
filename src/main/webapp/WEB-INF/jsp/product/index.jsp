@@ -13,16 +13,16 @@
     <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
     <script type="text/javascript" src="../../statics/scripts/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="../../statics/scripts/function.js"></script>
+    <script type="text/javascript" src="../../statics/scripts/common.js"></script>
     <script>
         <%--<c:if test="${empty users}">--%>
         <%--location.href = "/product/doIndex.html";--%>
         <%--</c:if>--%>
         // 分页带条件跳转
         function goToPage(pageIndex,categoryId) {
+            if (isEmpty(pageIndex)) pageIndex = 1;
+            if (isEmpty(categoryId)) categoryId = 0;
             location.href = "/product/doIndex.html/" + pageIndex + "?categoryId=" + categoryId
-            <c:if test="${empty categoryId}">
-                categoryId = 0;
-            </c:if>
         }
     </script>
 </head>

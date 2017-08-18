@@ -34,6 +34,7 @@ public class CategoryController {
             }
             request.setAttribute("categoryLevel2",categoryLevel2);
         }
+        request.setAttribute("selUrl",2);
         request.setAttribute("pages", pages);
         return "manager/product/category/categoryList";
     }

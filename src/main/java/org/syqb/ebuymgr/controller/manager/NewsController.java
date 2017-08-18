@@ -25,6 +25,7 @@ public class NewsController {
         pages.setPageSize(6);
         pages.setTotalCount(newsService.getNewsCount());
         pages.setPageList(newsService.getNewsByPage(pages));
+        request.setAttribute("selUrl",5);
         request.setAttribute("pages", pages);
         return "manager/news/newsList";
     }

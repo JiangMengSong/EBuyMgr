@@ -17,6 +17,12 @@
         from easybuy_order_detail
         where orderDetailId = #{orderdetailid,jdbcType=INTEGER}
     </select>
+    <select id="getOrderDetailByOrderId" resultMap="OrderDetailBean">
+        select * from easybuy_order_detail
+        inner join easybuy_order on easybuy_order_detail.orderId = easybuy_order.orderId
+        inner join easybuy_product on easybuy_order_detail.productId = easybuy_product.productId
+        where easybuy_order_detail.orderId = #{orderId}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from easybuy_order_detail
         where orderDetailId = #{orderdetailid,jdbcType=INTEGER}

@@ -17,20 +17,6 @@
     </script>
 </head>
 <body>
-<div id="header" class="wrap">
-    <div id="logo"><img src="../../statics/images/logo.gif"/></div>
-    <div class="help"><a href="/doIndex.html">返回前台页面</a></div>
-    <div class="navbar">
-        <ul class="clearfix">
-            <li><a href="/user/toManager.html">首页</a></li>
-            <li><a href="/user/getUsers.html">用户</a></li>
-            <li><a href="/product/getProduct.html">商品</a></li>
-            <li><a href="order.html">订单</a></li>
-            <li class="current"><a href="/mgr/comment/getComment.html">留言</a></li>
-            <li><a href="/mgr/news/getNews.html">新闻</a></li>
-        </ul>
-    </div>
-</div>
 <%@include file="../common/title.jsp" %>
 <div id="main" class="wrap">
     <%@include file="../common/left.jsp" %>

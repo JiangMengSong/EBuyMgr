@@ -64,7 +64,8 @@ public class UserController {
 
     // 后台管理跳转
     @RequestMapping(value = "/toManager.html", produces = "text/html;charset=utf-8")
-    public String toManager() {
+    public String toManager(HttpServletRequest request) {
+        request.setAttribute("selUrl",0);
         return "manager/index";
     }
 
@@ -77,6 +78,7 @@ public class UserController {
     // 分页获取用户
     @RequestMapping(value = "/getUsers.html/{pageIndex}", produces = "text/html;charset=utf-8")
     public String getUsers(HttpServletRequest request, Pages<User> pages) {
+        request.setAttribute("selUrl",1);
         pages.setPageSize(7);
         pages.setTotalCount(userService.getUserCount());
         pages.setPageList(userService.getUserByPage(pages));

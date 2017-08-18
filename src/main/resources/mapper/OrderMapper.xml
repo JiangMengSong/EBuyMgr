@@ -17,6 +17,24 @@
         from easybuy_order
         where orderId = #{orderid,jdbcType=INTEGER}
     </select>
+    <select id="getOrderCount" resultType="java.lang.Integer">
+        select count(*) from easybuy_order
+    </select>
+    <select id="getOrderByPage" resultMap="OrderBean">
+        select * from easybuy_order
+        inner join easybuy_user on easybuy_order.userId = easybuy_user.userId
+        <if test="order">
+            <where>
+                <if test="order.orderserialnumber != null and order.orderserialnumber != ''">
+                    and orderSerialNumber = #{order.orderserialnumber}
+                </if>
+                <if test="order.user != null and order.user.username != null and order.user.username != ''">
+                    and easybuy_user.userName like concat('%',#{order.user.username},'%')
+                </if>
+            </where>
+        </if>
+        limit #{pageIndex},#{pageSize}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from easybuy_order
         where orderId = #{orderid,jdbcType=INTEGER}

@@ -2,9 +2,11 @@ package org.syqb.ebuymgr.controller;
 
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.syqb.ebuymgr.common.Pages;
+import org.syqb.ebuymgr.pojo.News;
 import org.syqb.ebuymgr.pojo.User;
 import org.syqb.ebuymgr.service.user.UserService;
 
@@ -86,4 +88,40 @@ public class UserController {
         return "manager/user/userList";
     }
 
+    //根据id查询用户
+    @RequestMapping(value = "/toUpdate.html/{userid}",produces = "text/html;charset=utf-8")
+    public String getUsers(HttpServletRequest request,@PathVariable int userid){
+        User user=userService.selectById(userid);
+        if(user!=null) {
+            request.setAttribute("user", user);
+            return "manager/user/user-modify";
+
+        }else {
+            return "manager/user/user-modify";
+        }
+    }
+
+    //修改用户
+    @RequestMapping(value = "/doUpdate.html", produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String updateUser(User user){
+        JSONObject result = new JSONObject();
+        result.put("flag",false);
+        if (user!= null){
+        int sum=userService.updateUser(user);
+        if(sum>0)
+            result.put("flag",true);
+        }
+        return result.toString();
+    }
+
+    //删除用户
+    @RequestMapping(value = "/delUser.html/{userid}", produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String delUser(@PathVariable Integer userid){
+        JSONObject result = new JSONObject();
+        result.put("flag",false);
+        if (userid != null && userService.delUser(userid) > 0) result.put("flag",true);
+        return result.toString();
+    }
 }

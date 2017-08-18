@@ -43,6 +43,7 @@ public class NewsController {
         request.setAttribute("news",newsService.getNewsById(newsId));
         return "manager/news/newsOpera";
     }
+
     @RequestMapping(value = "/doOperaNews.html", produces = "text/html;charset=utf-8")
     @ResponseBody
     public String doOperaNews(News news){

@@ -15,4 +15,10 @@ public interface UserService {
 
     List<User> getUserByPage(Pages<User> pages);
 
+    User selectById(int id);
+
+    int updateUser(User user);
+
+    int delUser(int id);
+
 }

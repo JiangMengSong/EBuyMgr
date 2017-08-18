@@ -33,4 +33,19 @@ public class UserServiceImpl implements UserService {
     public List<User> getUserByPage(Pages<User> pages) {
         return userMapper.getUserByPage((pages.getPageIndex() - 1) * pages.getPageSize(), pages.getPageSize());
     }
+
+    @Override
+    public User selectById(int id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
+
+    @Override
+    public int delUser(int id) {
+        return userMapper.deleteByPrimaryKey(id);
+    }
 }

@@ -150,24 +150,6 @@
                     </c:if>
                 </ul>
             </div>
-            <%--<div style="width: 400px;margin: 0px;">--%>
-                <%--<c:if test="${pages.pageIndex  > 1}">--%>
-                    <%--<a href="javascript:void(0);" onclick="goToPage(1,${categoryId})">首页</a>--%>
-                <%--</c:if>--%>
-                <%--<ul class="allPage"></ul>--%>
-                <%--<span>${pages.pageIndex}/${pages.totalPage}</span>--%>
-                <%--<c:if test="${pages.pageIndex  != 1}">--%>
-                    <%--<a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex - 1},${categoryId})">上一页</a>--%>
-                <%--</c:if>--%>
-                <%--<c:if test="${pages.pageIndex < pages.totalPage}">--%>
-                    <%--<a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex + 1},${categoryId})">下一页</a>--%>
-                <%--</c:if>--%>
-                <%--<c:if test="${pages.pageIndex < pages.totalPage}">--%>
-                    <%--<a href="javascript:void(0);" onclick="goToPage(${pages.totalPage},${categoryId})">末页</a>--%>
-                <%--</c:if>--%>
-                <%--<input style="width: 30px" id="goPage">--%>
-                <%--<button type="button" id="goPageBtn">Go</button>--%>
-            <%--</div>--%>
         </div>
         <div class="side">
             <div class="spacer"></div>

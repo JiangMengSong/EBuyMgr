@@ -23,11 +23,11 @@
     <div class="navbar">
         <ul class="clearfix">
             <li><a href="/user/toManager.html">首页</a></li>
-            <li><a href="/user/getUsers.html">用户</a></li>
+            <li class="current"><a href="/user/getUsers.html">用户</a></li>
             <li><a href="product.html">商品</a></li>
             <li><a href="order.html">订单</a></li>
             <li><a href="/mgr/comment/getComment.html">留言</a></li>
-            <li class="current"><a href="/mgr/news/getNews.html">新闻</a></li>
+            <li><a href="/mgr/news/getNews.html">新闻</a></li>
         </ul>
     </div>
 </div>

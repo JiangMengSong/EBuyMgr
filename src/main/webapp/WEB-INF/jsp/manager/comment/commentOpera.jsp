@@ -11,7 +11,7 @@
 <head>
     <title>后台管理 - 易买网</title>
     <script>
-        <c:if test="${empty news}">
+        <c:if test="${empty comment}">
         location.href="/user/toManager.html";
         </c:if>
     </script>
@@ -23,27 +23,32 @@
     <div class="main">
         <h2>回复留言</h2>
         <div class="manage">
-            <form method="post">
+            <form method="post" id="commentForm">
+                <input type="hidden" name="commentid" value="${comment.commentid}">
                 <table class="form">
                     <tr>
                         <td class="field">留言编号：</td>
-                        <td>12</td>
+                        <td>${comment.commentid}</td>
                     </tr>
                     <tr>
                         <td class="field">留言姓名：</td>
-                        <td>张三</td>
+                        <td>${comment.user.username}</td>
                     </tr>
                     <tr>
                         <td class="field">留言内容：</td>
-                        <td>高老庄的货发了没？</td>
+                        <td>${comment.commentcontent}</td>
                     </tr>
                     <tr>
                         <td class="field">回复内容：</td>
-                        <td><textarea name="replyContent"></textarea></td>
+                        <td><textarea id="replyContent" name="replycontent">${comment.replycontent}</textarea></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><label class="ui-blue"><input type="button" name="submit" value="更新" /></label></td>
+                        <td>
+                            <label class="ui-blue">
+                                <input type="button" id="subBtn" name="submit" value="保存" />
+                            </label>
+                        </td>
                     </tr>
                 </table>
             </form>
@@ -54,5 +59,29 @@
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号
 </div>
+<script>
+    $(function () {
+        $("#subBtn").click(function () {
+            if(isEmpty($("#replyContent").val())){
+                alert("回复内容不能为空")
+                return false;
+            }
+            $.ajax({
+                url:"/mgr/comment/doOperaComment.html",
+                data:$("#commentForm").serialize(),
+                type:"post",
+                dataType:"json",
+                success:function (result) {
+                    if (result.flag){
+                        alert("保存成功");
+                        location.href="/mgr/comment/getComment.html/1";
+                    }else alert("保存失败");
+                },error:function () {
+                    alert("保存出错")
+                }
+            })
+        })
+    })
+</script>
 </body>
 </html>

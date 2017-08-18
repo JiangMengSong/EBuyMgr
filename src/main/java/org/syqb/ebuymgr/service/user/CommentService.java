@@ -9,4 +9,10 @@ public interface CommentService {
     int getCommentCount();
 
     List<Comment> getCommentByPage(Pages<Comment> pages);
+
+    int delComment(Integer commentId);
+
+    Comment getCommentById(Integer commentId);
+
+    int updateComment(Comment comment);
 }

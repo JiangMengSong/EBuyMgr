@@ -23,4 +23,19 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getCommentByPage(Pages<Comment> pages) {
         return commentMapper.getCommentByPage((pages.getPageIndex() - 1) * pages.getPageSize(), pages.getPageSize());
     }
+
+    @Override
+    public int delComment(Integer commentId) {
+        return commentMapper.delComment(commentId);
+    }
+
+    @Override
+    public Comment getCommentById(Integer commentId) {
+        return commentMapper.getCommentById(commentId);
+    }
+
+    @Override
+    public int updateComment(Comment comment) {
+        return commentMapper.updateComment(comment);
+    }
 }

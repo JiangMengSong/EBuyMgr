@@ -68,7 +68,7 @@
                 success:function (result) {
                     if (result.flag){
                         alert("保存成功");
-                        location.href="/mgr/news/getNews.html";
+                        location.href="/mgr/news/getNews.html/1";
                     }else alert("保存失败");
                 },error:function () {
                     alert("保存出错")

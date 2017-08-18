@@ -6,13 +6,11 @@ import org.syqb.ebuymgr.pojo.Comment;
 import java.util.List;
 
 public interface CommentMapper {
-    int deleteByPrimaryKey(Integer commentid);
+    int delComment(@Param("commentId") Integer commentId);
 
-    int insert(Comment record);
+    Comment getCommentById(@Param("commentId") Integer commentId);
 
-    Comment selectByPrimaryKey(Integer commentid);
-
-    int updateByPrimaryKeySelective(Comment record);
+    int updateComment(@Param("comment") Comment comment);
 
     int getCommentCount();
 

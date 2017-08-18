@@ -123,7 +123,7 @@
                     <li>
                         <dl>
                             <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
-                            <dd class="title"><a href="product-view.html/${product.productname}" target="_self">${product.productname}</a></dd>
+                            <dd class="title"><a href="proDetail.html/${product.productname}" target="_self">${product.productname}</a></dd>
                             <dd class="price">￥${product.productprice}</dd>
                         </dl>
                     </li>

@@ -32,10 +32,10 @@
     where commentId = #{commentid,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Comment">
-    insert into easybuy_comment (commentId, commentContent, commentDate, 
+    insert into easybuy_comment (commentId, commentContent, commentDate,
       userId, replyContent, replyDate
       )
-    values (#{commentid,jdbcType=INTEGER}, #{commentcontent,jdbcType=VARCHAR}, #{commentdate,jdbcType=TIMESTAMP}, 
+    values (#{commentid,jdbcType=INTEGER}, #{commentcontent,jdbcType=VARCHAR}, #{commentdate,jdbcType=TIMESTAMP},
       #{userid,jdbcType=INTEGER}, #{replycontent,jdbcType=VARCHAR}, #{replydate,jdbcType=TIMESTAMP}
       )
   </insert>

@@ -29,4 +29,28 @@ public class NewsServiceImpl implements NewsService {
     public int getNewsCount() {
         return newsMapper.getNewsCount();
     }
+
+    @Override
+    public int deleteNews(Integer newsId) {
+        if (newsId == null || newsId < 1) return 0;
+        return newsMapper.deleteNews(newsId);
+    }
+
+    @Override
+    public int addNews(News news) {
+        if (news == null) return 0;
+        return newsMapper.addNews(news);
+    }
+
+    @Override
+    public News getNewsById(Integer newsId) {
+        if (newsId == null || newsId < 1) return null;
+        return newsMapper.getNewsById(newsId);
+    }
+
+    @Override
+    public int updateNews(News news) {
+        if (news == null) return 0;
+        return newsMapper.updateNews(news);
+    }
 }

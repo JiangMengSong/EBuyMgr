@@ -347,16 +347,7 @@ $(function () {
             return false;
         }
     });
-    //后台删除
-    $(".manageDel").click(function () {
-        var $tr = $(this).parent().parent();
-        if (confirm("确定要删除吗？")) {
-            if ($tr) $tr.remove();
-            location.herf = "";
-        } else {
-            return false;
-        }
-    })
+
     //修改
     $(".number").find("span").click(function () {
         var $tds = $(this).parent().parent().children("td");

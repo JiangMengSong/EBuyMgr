@@ -12,7 +12,7 @@
             <dt>留言管理</dt>
             <dd><a href="/mgr/comment/getComment.html">留言管理</a></dd>
             <dt>新闻管理</dt>
-            <dd><em><a href="news-add.html">新增</a></em><a href="/mgr/news/getNews.html">新闻管理</a></dd>
+            <dd><em><a href="/mgr/news/toOperaNews.html">新增</a></em><a href="/mgr/news/getNews.html">新闻管理</a></dd>
         </dl>
     </div>
 </div>

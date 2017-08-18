@@ -12,7 +12,7 @@
         <collection property="category" resultMap="org.syqb.ebuymgr.mapper.CategoryMapper.CategoryBean"/>
     </resultMap>
     <sql id="Base_Column_List">
-    productId, productName, productDescription, productPrice, productStock, categoryId, 
+    productId, productName, productDescription, productPrice, productStock, categoryId,
     productFileName, isDelete
   </sql>
     <sql id="CategoryInnerJoin">
@@ -47,11 +47,11 @@
     where productId = #{productid,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Product">
-    insert into easybuy_product (productId, productName, productDescription, 
-      productPrice, productStock, categoryId, 
+    insert into easybuy_product (productId, productName, productDescription,
+      productPrice, productStock, categoryId,
       productFileName, isDelete)
-    values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR}, 
-      #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, 
+    values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR},
+      #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER},
       #{productfilename,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER})
   </insert>
     <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Product">

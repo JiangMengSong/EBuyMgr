@@ -8,17 +8,13 @@ import org.syqb.ebuymgr.pojo.News;
 import java.util.List;
 
 public interface NewsMapper {
-    int deleteByPrimaryKey(Integer newsid);
+    int deleteNews(@Param("newsId")Integer newsId);
 
-    int insert(News record);
+    int addNews(@Param("news")News news);
 
-    int insertSelective(News record);
+    News getNewsById(@Param("newsId")Integer newsId);
 
-    News selectByPrimaryKey(Integer newsid);
-
-    int updateByPrimaryKeySelective(News record);
-
-    int updateByPrimaryKey(News record);
+    int updateNews(@Param("news")News news);
 
     List<News> getNewsByPage(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize);
 

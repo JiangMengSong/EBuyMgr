@@ -11,4 +11,12 @@ public interface NewsService {
     List<News> getNewsByPage(Pages<News> pages);
 
     int getNewsCount();
+
+    int deleteNews(Integer newsId);
+
+    int addNews(News news);
+
+    News getNewsById(Integer newsId);
+
+    int updateNews(News news);
 }

@@ -13,7 +13,7 @@
         <result column="userType" property="usertype" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-    userId, loginName, userName, userPassword, userSex, identityCode, userEmail, userMobile, 
+    userId, loginName, userName, userPassword, userSex, identityCode, userEmail, userMobile,
     userType
   </sql>
     <select id="selectByPrimaryKey" resultMap="UserBean" parameterType="java.lang.Integer">
@@ -41,12 +41,12 @@
     where userId = #{userid,jdbcType=INTEGER}
   </delete>
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.User">
-    insert into easybuy_user (userId, loginName, userName, 
-      userPassword, userSex, identityCode, 
+    insert into easybuy_user (userId, loginName, userName,
+      userPassword, userSex, identityCode,
       userEmail, userMobile, userType
       )
-    values (#{userid,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{userpassword,jdbcType=VARCHAR}, #{usersex,jdbcType=INTEGER}, #{identitycode,jdbcType=VARCHAR}, 
+    values (#{userid,jdbcType=INTEGER}, #{loginname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+      #{userpassword,jdbcType=VARCHAR}, #{usersex,jdbcType=INTEGER}, #{identitycode,jdbcType=VARCHAR},
       #{useremail,jdbcType=VARCHAR}, #{usermobile,jdbcType=VARCHAR}, #{usertype,jdbcType=INTEGER}
       )
   </insert>

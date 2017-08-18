@@ -26,19 +26,16 @@ public class ProductController {
 
     @RequestMapping(value = "/doIndex.html", produces = "text/html;charset=utf-8")
     public String doIndex() {
-        return "redirect:/product/doIndex.html/1/0";
+        return "redirect:/product/doIndex.html/1";
     }
 
     @RequestMapping(value = "/doIndex.html/{pageIndex}", produces = "text/html;charset=utf-8")
-    public String doIndex(@PathVariable Integer pageIndex) {
-        return "redirect:/product/doIndex.html/"+pageIndex+"/0";
-    }
-
-    @RequestMapping(value = "/doIndex.html/{pageIndex}/{categoryId}", produces = "text/html;charset=utf-8")
-    public String doIndex(HttpServletRequest request, Pages<Product> pages,@PathVariable Integer categoryId) {
+    public String doIndex(HttpServletRequest request, Pages<Product> pages,Integer categoryId) {
         request.setAttribute("newsList", newsService.getNewsByDate());
         request.setAttribute("categoryList", categoryService.getCategory());
-        request.setAttribute("productList", productService.getProduct(pages,categoryId));
+        pages.setTotalCount(productService.getProductCount(categoryId));
+        pages.setPageList(productService.getProduct(pages,categoryId));
+        request.setAttribute("categoryId",categoryId);
         request.setAttribute("pages", pages);
         return "product/index";
     }

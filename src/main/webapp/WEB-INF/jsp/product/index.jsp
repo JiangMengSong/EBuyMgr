@@ -18,9 +18,11 @@
         <%--location.href = "/product/doIndex.html";--%>
         <%--</c:if>--%>
         // 分页带条件跳转
-        function goToPage(pageIndex) {
-            $("#provisoForm").attr("action", "/house/getHouse.html/" + pageIndex);
-            $("#provisoForm").submit();
+        function goToPage(pageIndex,categoryId) {
+            location.href = "/product/doIndex.html/" + pageIndex + "?categoryId=" + categoryId
+            <c:if test="${empty categoryId}">
+                categoryId = 0;
+            </c:if>
         }
     </script>
 </head>
@@ -86,7 +88,9 @@
                         <dt>${category.categoryname}</dt>
                         <c:forEach items="${categoryList}" var="categorys">
                             <c:if test="${categorys.categoryparentid == category.categoryid}">
-                                <dd><a href="product-list.html">${categorys.categoryname}</a></dd>
+                                <dd>
+                                    <a href="javascript:void(0)" onclick="goToPage(1,${categorys.categoryid})">${categorys.categoryname}</a>
+                                </dd>
                             </c:if>
                         </c:forEach>
                     </c:if>
@@ -117,32 +121,53 @@
             </div>
             <h2>商品列表</h2>
             <ul class="product clearfix">
-                <li>
-                    <dl>
-                        <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
-                        <dd class="title"><a href="product-view.html" target="_self">法国德菲丝松露精品巧克力500g/盒</a></dd>
-                        <dd class="price">￥108.0</dd>
-                    </dl>
-                </li>
+                <c:forEach items="${pages.pageList}" var="product">
+                    <li>
+                        <dl>
+                            <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
+                            <dd class="title"><a href="product-view.html" target="_self">${product.productname}</a></dd>
+                            <dd class="price">￥${product.productprice}</dd>
+                        </dl>
+                    </li>
+                </c:forEach>
             </ul>
-            <div>
-                <c:if test="${pages.pageIndex  > 1}">
-                    <a href="javascript:void(0);" onclick="goToPage(1)">首页</a>
-                </c:if>
-                <ul class="allPage"></ul>
-                <span>${pages.pageIndex}/${pages.totalPage}</span>
-                <c:if test="${pages.pageIndex  != 1}">
-                    <a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex - 1})">上一页</a>
-                </c:if>
-                <c:if test="${pages.pageIndex < pages.totalPage}">
-                    <a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex + 1})">下一页</a>
-                </c:if>
-                <c:if test="${pages.pageIndex < pages.totalPage}">
-                    <a href="javascript:void(0);" onclick="goToPage(${pages.totalPage})">末页</a>
-                </c:if>
-                <input style="width: 30px" id="goPage">
-                <button type="button" id="goPageBtn">Go</button>
+            <div class="pager">
+                <ul class="clearfix">
+                    <c:if test="${pages.pageIndex > 1}">
+                        <li><a href="javascript:void(0);" onclick="goToPage(1,${categoryId})">首页</a></li>
+                        <c:if test="${pages.pageIndex > 2}">
+                            <li>...</li>
+                        </c:if>
+                        <li><a href="javascript:void(0)" onclick="goToPage(${pages.pageIndex-1},${categoryId})">${pages.pageIndex-1}</a></li>
+                    </c:if>
+                    <li class="current">${pages.pageIndex}</li>
+                    <c:if test="${pages.pageIndex < pages.totalPage}">
+                        <li><a href="javascript:void(0)" onclick="goToPage(${pages.pageIndex+1},${categoryId})">${pages.pageIndex+1}</a></li>
+                        <c:if test="${pages.pageIndex < pages.totalPage - 1}">
+                            <li>...</li>
+                        </c:if>
+                        <li><a href="javascript:void(0)" onclick="goToPage(${pages.totalPage},${categoryId})">尾页</a></li>
+                    </c:if>
+                </ul>
             </div>
+            <%--<div style="width: 400px;margin: 0px;">--%>
+                <%--<c:if test="${pages.pageIndex  > 1}">--%>
+                    <%--<a href="javascript:void(0);" onclick="goToPage(1,${categoryId})">首页</a>--%>
+                <%--</c:if>--%>
+                <%--<ul class="allPage"></ul>--%>
+                <%--<span>${pages.pageIndex}/${pages.totalPage}</span>--%>
+                <%--<c:if test="${pages.pageIndex  != 1}">--%>
+                    <%--<a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex - 1},${categoryId})">上一页</a>--%>
+                <%--</c:if>--%>
+                <%--<c:if test="${pages.pageIndex < pages.totalPage}">--%>
+                    <%--<a href="javascript:void(0);" onclick="goToPage(${pages.pageIndex + 1},${categoryId})">下一页</a>--%>
+                <%--</c:if>--%>
+                <%--<c:if test="${pages.pageIndex < pages.totalPage}">--%>
+                    <%--<a href="javascript:void(0);" onclick="goToPage(${pages.totalPage},${categoryId})">末页</a>--%>
+                <%--</c:if>--%>
+                <%--<input style="width: 30px" id="goPage">--%>
+                <%--<button type="button" id="goPageBtn">Go</button>--%>
+            <%--</div>--%>
         </div>
         <div class="side">
             <div class="spacer"></div>

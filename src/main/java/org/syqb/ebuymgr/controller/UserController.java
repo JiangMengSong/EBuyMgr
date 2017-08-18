@@ -21,13 +21,7 @@ public class UserController {
     // 登录页
     @RequestMapping(value = "/toLogin.html", produces = "text/html;charset=utf-8")
     public String toLogin(HttpSession session, User users) {
-        return session.getAttribute("users") == null ? "user/login" : "house/index";
-    }
-
-    // 后台跳转
-    @RequestMapping(value = "/toManager.html", produces = "text/html;charset=utf-8")
-    public String toManager() {
-        return "manager/index";
+        return session.getAttribute("users") == null ? "user/login" : "redirect:/product/doIndex.html";
     }
 
     // 登录
@@ -66,6 +60,12 @@ public class UserController {
             } else result.put("flag", false);
         }
         return result.toString();
+    }
+
+    // 后台管理跳转
+    @RequestMapping(value = "/toManager.html", produces = "text/html;charset=utf-8")
+    public String toManager() {
+        return "manager/index";
     }
 
     // 跳转分页获取用户

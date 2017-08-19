@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
+
     @Resource(name = "productService")
     ProductService productService;
 

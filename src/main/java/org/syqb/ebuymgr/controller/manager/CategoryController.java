@@ -25,7 +25,7 @@ public class CategoryController {
     @RequestMapping(value = "/getCategory.html/{pageIndex}", produces = "text/html;charset=utf-8")
     public String getCategory(HttpServletRequest request, Pages<Category> pages) {
         pages.setPageSize(2);
-        pages.setTotalCount(categoryService.getCategoruCount());
+        pages.setTotalCount(categoryService.getCountByLevel(1));
         pages.setPageList(categoryService.getCategory(pages));
         if (pages.getPageSize() != null){
             Map<Integer,List<Category>> categoryLevel2 = new HashMap<Integer, List<Category>>();

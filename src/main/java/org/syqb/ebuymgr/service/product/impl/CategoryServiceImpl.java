@@ -30,8 +30,28 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public int getCategoruCount() {
-        return categoryMapper.getCategoruCount();
+    public int getCountByLevel(Integer level) {
+        return categoryMapper.getCountByLevel(level);
+    }
+
+    @Override
+    public int delCategory(Integer categoryId) {
+        return categoryMapper.delCategory(categoryId);
+    }
+
+    @Override
+    public int addCategory(Category category) {
+        return categoryMapper.addCategory(category);
+    }
+
+    @Override
+    public Category getCategoryById(Integer categoryId) {
+        return categoryMapper.getCategoryById(categoryId);
+    }
+
+    @Override
+    public int updateCategory(Category category) {
+        return categoryMapper.updateCategory(category);
     }
 
 

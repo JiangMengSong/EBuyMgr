@@ -39,7 +39,7 @@
                             <c:if test="${user.usersex == 0}">
                                 女
                             </c:if>
-                            <c:if test="${user.usersex == 0}">
+                            <c:if test="${user.usersex == 1}">
                                 男
                             </c:if>
                         </td>

@@ -22,11 +22,11 @@
                     <input type="hidden" name="userid" value="${user.userid}">
                     <tr>
                         <td class="field">用户名(*)：</td>
-                        <td><input type="text" class="text" name="username" value="${user.loginname}" readonly="readonly" /></td>
+                        <td><input type="text" class="text" name="loginname" value="${user.loginname}" readonly="readonly" /></td>
                     </tr>
                     <tr>
                         <td class="field">真实姓名(*)：</td>
-                        <td><input type="text" class="text" id="username" name="loginname" value="${user.username}"   /></td>
+                        <td><input type="text" class="text" id="username" name="username" value="${user.username}"   /></td>
                     </tr>
                     <tr>
                         <td class="field">登录密码(*)：</td>

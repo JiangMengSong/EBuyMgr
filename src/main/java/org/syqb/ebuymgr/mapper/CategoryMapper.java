@@ -6,21 +6,17 @@ import org.syqb.ebuymgr.pojo.Category;
 import java.util.List;
 
 public interface CategoryMapper {
-    int deleteByPrimaryKey(Integer categoryid);
+    int delCategory(@Param("categoryId")Integer categoryId);
 
-    int insert(Category record);
+    int addCategory(@Param("category")Category category);
 
-    int insertSelective(Category record);
+    Category getCategoryById(@Param("categoryId") Integer categoryId);
 
-    Category selectByPrimaryKey(Integer categoryid);
-
-    int updateByPrimaryKeySelective(Category record);
-
-    int updateByPrimaryKey(Category record);
+    int updateCategory(@Param("category")Category category);
 
     List<Category> getCategory(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSi);
 
     List<Category> getCategoryByParentId(@Param("parentId")Integer parentId);
 
-    int getCategoruCount();
+    int getCountByLevel(@Param("level") Integer level);
 }

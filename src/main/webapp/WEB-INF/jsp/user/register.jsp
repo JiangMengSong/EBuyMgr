@@ -16,7 +16,7 @@
             $("#resBtn").click(function () {
 
                 var name = $("#loginname").val();
-                if (name == null || name == "") {
+                if (isEmpty(name)) {
                     alert('用户名不能为空！');
                     return false;
                 }
@@ -82,8 +82,7 @@
                     success: function (result) {
                         if (result.flag == true) {
                             alert('注册成功');
-                            location.href("toLogin.html");
-
+                            location.href = "/user/toLogin.html";
                         } else alert("注册失败");
                     }, error: function () {
                         alert("注册错误")

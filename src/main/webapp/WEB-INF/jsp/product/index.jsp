@@ -12,15 +12,13 @@
 <head>
     <title>易买网 - 首页</title>
     <script>
-        // 分页带条件跳转
-        function goToPage(pageIndex,categoryId) {
-            if (isEmpty(pageIndex)) pageIndex = 1;
-            if (isEmpty(categoryId)) categoryId = 0;
-            location.href = "/product/doIndex.html/" + pageIndex + "?categoryId=" + categoryId
-        }
-    </script>
-
-
+    // 分页带条件跳转
+    function goToPage(pageIndex,categoryId) {
+        if (isEmpty(pageIndex)) pageIndex = 1;
+        if (isEmpty(categoryId)) categoryId = 0;
+        location.href = "/product/doIndex.html/" + pageIndex + "?categoryId=" + categoryId
+    }
+</script>
 
     ${jquery_3}${js_common}${js_function}${cs_stylee}
 </head>
@@ -43,7 +41,7 @@
         </c:if>
         <c:if test="${users.usertype == 1}">
             <a href="/user/toManager.html">后台管理</a></div>
-        </c:if>
+         </c:if>
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="#">首页</a></li>
@@ -123,7 +121,7 @@
                     <li>
                         <dl>
                             <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
-                            <dd class="title"><a href="proDetail.html/${product.productname}" target="_self">${product.productname}</a></dd>
+                            <dd class="title"><a href="/product/proDetail.html/${product.productid}" target="_self">${product.productname}</a></dd>
                             <dd class="price">￥${product.productprice}</dd>
                         </dl>
                     </li>

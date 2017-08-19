@@ -37,6 +37,7 @@ public class ProductController {
         pages.setTotalCount(productService.getProductCount(categoryId));
         pages.setPageList(productService.getProduct(pages,categoryId));
         request.setAttribute("categoryId",categoryId);
+        if(categoryId == null) request.setAttribute("categoryId",0);
         request.setAttribute("pages", pages);
         return "product/index";
     }
@@ -58,7 +59,7 @@ public class ProductController {
 
     //商品详情
     @RequestMapping(value = "/proDetail.html/{productid}", produces = "text/html;charset=utf-8")
-    public String getProductById(HttpServletRequest request,int productid) {
+    public String getProductById(HttpServletRequest request,@PathVariable Integer productid) {
         Product pro=productService.getProById(productid);
         if(pro!=null) {
             request.setAttribute("pro", pro);

@@ -5,6 +5,7 @@
   Time: 23:16
   To change this template use File | Settings | File Templates.
 --%>
+<%@include file="../common/taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -98,7 +99,7 @@
             <div class="thumb"><img src="images/product/10.jpg" width="110" height="106" /></div>
             <div class="buy">
                 商城价：<span class="price">￥${pro.productprice}</span><br />
-                库　存：有货
+                库　存：${pro.productstock}
                 <div class="button"><input type="button" name="button" value="" onclick="location.href = 'address.html'" /><a href="shopping.html">放入购物车</a></div>
             </div>
             <div class="clear"></div>
@@ -106,8 +107,9 @@
         <div class="introduce">
             <h2><strong>商品详情</strong></h2>
             <div class="text">
-                利仁2018M福满堂电饼铛 好用实惠<br />
-                ......<br />
+                <br />
+                ${pro.productdescription}
+                <br />
             </div>
         </div>
     </div>

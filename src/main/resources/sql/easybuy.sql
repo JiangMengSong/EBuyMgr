@@ -22,10 +22,10 @@ DROP TABLE IF EXISTS `easybuy_comment`;
 CREATE TABLE `easybuy_comment` (
   `commentId` int(11) NOT NULL AUTO_INCREMENT,
   `commentContent` varchar(255) DEFAULT NULL,
-  `commentDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `commentDate` datetime ,
   `userId` int(11) DEFAULT NULL,
   `replyContent` varchar(255) DEFAULT NULL,
-  `replyDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `replyDate` datetime ,
   PRIMARY KEY (`commentId`),
   KEY `FK_comment_user` (`userId`),
   CONSTRAINT `FK_comment_user` FOREIGN KEY (`userId`) REFERENCES `easybuy_user` (`userId`)
@@ -270,7 +270,7 @@ CREATE TABLE `easybuy_recentbrowse` (
   `recentBrowseId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) DEFAULT NULL,
   `productId` int(11) DEFAULT NULL,
-  `recentBrowseDate` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `recentBrowseDate` datetime ,
   PRIMARY KEY (`recentBrowseId`),
   KEY `FK_recentbrowse_user` (`userId`),
   KEY `FK_recentbrowse_product` (`productId`),

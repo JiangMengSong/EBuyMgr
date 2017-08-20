@@ -50,4 +50,10 @@ public class CategoryController {
         if (categoryId != null && categoryId > 0 && categoryService.delCategory(categoryId) > 0) result.put("flag",true);
         return result.toString();
     }
+
+    @RequestMapping(value = "/toUpdateCategory.html/{categoryId}", produces = "text/html;charset=utf-8")
+    public String toUpdateCategory(HttpServletRequest request,@PathVariable Integer categoryId) {
+
+        return "manager/product/category/categoryOpera";
+    }
 }

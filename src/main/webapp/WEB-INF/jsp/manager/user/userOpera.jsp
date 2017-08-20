@@ -55,10 +55,6 @@
                         <td><input type="text" class="text" id="mobile" name="usermobile" value="${user.usermobile}" /></td>
                     </tr>
                     <tr>
-                        <td class="field">地址(*)：</td>
-                        <td><input type="text" class="text" name="address" value="高老庄" /></td>
-                    </tr>
-                    <tr>
                         <td></td>
                         <td><label class="ui-blue"><input type="button" name="submit" id="subBtn" value="更新" /></label></td>
                     </tr>

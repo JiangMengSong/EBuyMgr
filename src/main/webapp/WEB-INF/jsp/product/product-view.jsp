@@ -11,7 +11,6 @@
 <head>
     <head>
         <title>易买网 - 首页</title>
-
         ${jquery_3}${js_common}${js_function}${cs_stylee}
     </head>
 </head>

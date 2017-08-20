@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-08-20 19:20:49
+Date: 2017-08-20 20:00:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -102,17 +102,20 @@ CREATE TABLE `easybuy_order` (
   `orderCreateTime` datetime DEFAULT NULL COMMENT '创建时间',
   `orderCost` double DEFAULT NULL COMMENT '总消费',
   `orderSerialNumber` varchar(255) DEFAULT NULL COMMENT '订单号',
+  `addressId` int(11) DEFAULT NULL,
   PRIMARY KEY (`orderId`),
   KEY `FK_order_user` (`userId`),
+  KEY `FK_order_address` (`addressId`),
+  CONSTRAINT `FK_order_address` FOREIGN KEY (`addressId`) REFERENCES `easybuy_user_address` (`addressId`),
   CONSTRAINT `FK_order_user` FOREIGN KEY (`userId`) REFERENCES `easybuy_user` (`userId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of easybuy_order
 -- ----------------------------
-INSERT INTO `easybuy_order` VALUES ('1', '18', '2016-06-02 14:51:46', '1721', '31579623146812');
-INSERT INTO `easybuy_order` VALUES ('2', '18', '2016-06-02 14:52:49', '8596', '31213141312312');
-INSERT INTO `easybuy_order` VALUES ('3', '2', '2016-06-03 11:41:09', '456', '31551324346532');
+INSERT INTO `easybuy_order` VALUES ('1', '18', '2016-06-02 14:51:46', '1721', '31579623146812', null);
+INSERT INTO `easybuy_order` VALUES ('2', '18', '2016-06-02 14:52:49', '8596', '31213141312312', null);
+INSERT INTO `easybuy_order` VALUES ('3', '2', '2016-06-03 11:41:09', '456', '31551324346532', null);
 
 -- ----------------------------
 -- Table structure for easybuy_order_detail
@@ -318,7 +321,7 @@ CREATE TABLE `easybuy_user` (
   `userType` int(2) DEFAULT '0' COMMENT '类型（1：后台 0:前台）',
   PRIMARY KEY (`userId`),
   UNIQUE KEY `PK__EASYBUY___C96109CC3A81B327` (`loginName`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of easybuy_user
@@ -334,6 +337,7 @@ INSERT INTO `easybuy_user` VALUES ('16', 'lgw', '李高伟', '123', '1', '140225
 INSERT INTO `easybuy_user` VALUES ('18', 'shangzezhong', '尚泽忠', '123', '1', '140225198810013745', '1044888844@qq.com', '13366528458', '0');
 INSERT INTO `easybuy_user` VALUES ('19', 'liguangliang', '李光亮', '123', '1', '140225198841547785', '1047777@qq.com', '13366055048', '0');
 INSERT INTO `easybuy_user` VALUES ('20', 'szz', '李光亮', '123', '1', '140225198810013748', '1044732267@qq.com', '13366555010', '1');
+INSERT INTO `easybuy_user` VALUES ('22', 'Dick_Wang', '王dick', '123456', '0', '123456789012345678', '123@qq.com', '12312312311', '0');
 
 -- ----------------------------
 -- Table structure for easybuy_user_address

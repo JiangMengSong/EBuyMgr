@@ -13,6 +13,8 @@ public class Order {
 
     private String orderserialnumber;
 
+    private UserAddress address;
+
     public Integer getOrderid() {
         return orderid;
     }
@@ -51,5 +53,13 @@ public class Order {
 
     public void setOrderserialnumber(String orderserialnumber) {
         this.orderserialnumber = orderserialnumber;
+    }
+
+    public UserAddress getAddress() {
+        return address;
+    }
+
+    public void setAddress(UserAddress address) {
+        this.address = address;
     }
 }

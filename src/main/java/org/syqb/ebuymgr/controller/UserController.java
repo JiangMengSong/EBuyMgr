@@ -89,16 +89,14 @@ public class UserController {
     }
 
     //根据id查询用户
-    @RequestMapping(value = "/toUpdate.html/{userid}",produces = "text/html;charset=utf-8")
-    public String getUsers(HttpServletRequest request,@PathVariable int userid){
-        User user=userService.selectById(userid);
-        if(user!=null) {
-            request.setAttribute("user", user);
-            return "manager/user/user-modify";
+    @RequestMapping(value = "/toUpdate.html/{userId}",produces = "text/html;charset=utf-8")
+    public String getUsers(HttpServletRequest request,@PathVariable Integer userId){
+        if (userId == null || userId <= 0) return "redirect:/product/doIndex.html/1";
+        User user = userService.selectById(userId);
+        if(user == null) return "redirect:/product/doIndex.html/1";
+        request.setAttribute("user", user);
+        return "manager/user/userOpera";
 
-        }else {
-            return "manager/user/user-modify";
-        }
     }
 
     //修改用户
@@ -107,11 +105,7 @@ public class UserController {
     public String updateUser(User user){
         JSONObject result = new JSONObject();
         result.put("flag",false);
-        if (user!= null){
-        int sum=userService.updateUser(user);
-        if(sum>0)
-            result.put("flag",true);
-        }
+        if(user!= null && userService.updateUser(user)>0)result.put("flag",true);
         return result.toString();
     }
 

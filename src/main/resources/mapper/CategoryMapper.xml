@@ -16,6 +16,7 @@
         select * from easybuy_product_category
         <if test="pageIndex != null and pageSize != null and pageSize > 0">
             where categoryParentId = 0
+            order by categoryId desc
             limit #{pageIndex},#{pageSize}
         </if>
     </select>
@@ -33,9 +34,13 @@
         </where>
     </select>
 
-    <delete id="delCategory" parameterType="java.lang.Integer">
-
-    </delete>
+    <select id="delCategory" statementType="CALLABLE" parameterType="java.util.Map" resultType="java.util.Map">
+        {
+            call category_del(
+              #{map.delId,jdbcType=INTEGER,mode=IN},#{map.delCount,jdbcType=INTEGER,mode=OUT}
+            )
+        }
+    </select>
 
     <insert id="addCategory" parameterType="org.syqb.ebuymgr.pojo.Category">
         insert into easybuy_product_category (categoryId, categoryName, categoryParentId,categoryType, iconClass)

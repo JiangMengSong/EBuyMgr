@@ -1,7 +1,10 @@
 package org.syqb.ebuymgr.controller.manager;
 
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.syqb.ebuymgr.common.Pages;
 import org.syqb.ebuymgr.pojo.Category;
 import org.syqb.ebuymgr.service.product.CategoryService;
@@ -37,5 +40,14 @@ public class CategoryController {
         request.setAttribute("selUrl",2);
         request.setAttribute("pages", pages);
         return "manager/product/category/categoryList";
+    }
+
+    @RequestMapping(value = "/delCategory.html/{categoryId}", produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String delCategory(@PathVariable Integer categoryId){
+        JSONObject result = new JSONObject();
+        result.put("flag",false);
+        if (categoryId != null && categoryId > 0 && categoryService.delCategory(categoryId) > 0) result.put("flag",true);
+        return result.toString();
     }
 }

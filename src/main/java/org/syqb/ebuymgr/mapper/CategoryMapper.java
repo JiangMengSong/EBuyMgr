@@ -4,9 +4,10 @@ import org.apache.ibatis.annotations.Param;
 import org.syqb.ebuymgr.pojo.Category;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CategoryMapper {
-    int delCategory(@Param("categoryId")Integer categoryId);
+    Map<String, Object> delCategory(@Param("map")Map<String, Object> map);
 
     int addCategory(@Param("category")Category category);
 

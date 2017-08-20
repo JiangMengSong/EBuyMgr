@@ -33,7 +33,10 @@
                     <tr>
                         <td class="first w4 c">${category.categoryid}</td>
                         <td>${category.categoryname}</td>
-                        <td class="w1 c"><a href="productClass-modify.html">修改</a> <a class="manageDel" href="javascript:void(0)">删除</a></td>
+                        <td class="w1 c">
+                            <a href="productClass-modify.html">修改</a>
+                            <a class="manageDel" onclick="delCategory(${category.categoryid})" href="javascript:void(0)">删除</a>
+                        </td>
                     </tr>
                     <c:if test="${not empty categoryLevel2}">
                         <c:forEach items="${categoryLevel2.get(category.categoryid)}" var="categorys">
@@ -42,7 +45,7 @@
                                 <td class="childClass">${categorys.categoryname}</td>
                                 <td class="w1 c">
                                     <a href="productClass-modify.html">修改</a>
-                                    <a class="manageDel" href="javascript:void(0)">删除</a>
+                                    <a class="manageDel" onclick="delCategory(${category.categoryid})" href="javascript:void(0)">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -57,5 +60,27 @@
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号
 </div>
+<script>
+    //后台删除
+    function delCategory(categoryId) {
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+                url:"/mgr/category/delCategory.html/"+categoryId,
+                dataType:"json",
+                type:"POST",
+                success:function (result) {
+                    if (result.flag){
+                        alert("删除成功");
+                        location.reload();
+                    }else alert("删除失败");
+                },error:function () {
+                    alert("删除出错")
+                }
+            })
+        } else {
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

@@ -7,7 +7,9 @@ import org.syqb.ebuymgr.pojo.Category;
 import org.syqb.ebuymgr.service.product.CategoryService;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {
@@ -36,7 +38,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public int delCategory(Integer categoryId) {
-        return categoryMapper.delCategory(categoryId);
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("delId",categoryId);
+        map.put("delCount",0);
+        Map<String, Object> maps = categoryMapper.delCategory(map);
+        return (Integer)(map.get("delCount"));
     }
 
     @Override

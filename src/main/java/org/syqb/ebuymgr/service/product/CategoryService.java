@@ -5,6 +5,7 @@ import org.syqb.ebuymgr.common.Pages;
 import org.syqb.ebuymgr.pojo.Category;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CategoryService {
     List<Category> getCategory();
@@ -15,11 +16,11 @@ public interface CategoryService {
 
     int getCountByLevel(Integer level);
 
-    int delCategory(@Param("categoryId")Integer categoryId);
+    int delCategory(Integer categoryId);
 
-    int addCategory(@Param("category")Category category);
+    int addCategory(Category category);
 
-    Category getCategoryById(@Param("categoryId") Integer categoryId);
+    Category getCategoryById(Integer categoryId);
 
-    int updateCategory(@Param("category")Category category);
+    int updateCategory(Category category);
 }

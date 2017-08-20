@@ -17,8 +17,9 @@
             <a class="button" id="logout" href="javascript:void(0);">注销</a>
         </c:if>
         <c:if test="${users.usertype == 1}">
-        <a href="/user/toManager.html">后台管理</a></div>
-    </c:if>
+            <a href="/user/toManager.html">后台管理</a>
+        </c:if>
+    </div>
     <div class="navbar">
         <ul class="clearfix">
             <li class="current"><a href="#">首页</a></li>

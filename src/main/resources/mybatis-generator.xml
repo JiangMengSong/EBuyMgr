@@ -76,9 +76,17 @@
         <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
         <!--<columnOverride column="productId" javaType="java.lang.Integer"/>-->
         <!--</table>-->
-        <table tableName="easybuy_comment" domainObjectName="Comment" enableCountByExample="false"
+        <!--<table tableName="easybuy_comment" domainObjectName="Comment" enableCountByExample="false"-->
+               <!--enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">-->
+            <!--<columnOverride column="commentId" javaType="java.lang.Integer"/>-->
+        <!--</table>-->
+        <table tableName="easybuy_recentbrowse" domainObjectName="RecentBrowse" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
-            <columnOverride column="commentId" javaType="java.lang.Integer"/>
+            <columnOverride column="recentBrowseId" javaType="java.lang.Integer"/>
+        </table>
+        <table tableName="easybuy_shoppingcart" domainObjectName="ShoppingCart" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+            <columnOverride column="shoppingCartId" javaType="java.lang.Integer"/>
         </table>
     </context>
 </generatorConfiguration>

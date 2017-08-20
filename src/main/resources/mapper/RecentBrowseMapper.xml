@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.syqb.ebuymgr.mapper.RecentBrowseMapper" >
+  <resultMap id="BaseResultMap" type="org.syqb.ebuymgr.pojo.RecentBrowse" >
+    <id column="recentBrowseId" property="recentbrowseid" jdbcType="INTEGER" />
+    <result column="recentBrowseDate" property="recentbrowsedate" jdbcType="TIMESTAMP" />
+    <collection property="user" resultMap="org.syqb.ebuymgr.mapper.UserMapper.UserBean"/>
+    <collection property="product" resultMap="org.syqb.ebuymgr.mapper.ProductMapper.ProductBean"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    recentBrowseId, userId, productId, recentBrowseDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from easybuy_recentbrowse
+    where recentBrowseId = #{recentbrowseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from easybuy_recentbrowse
+    where recentBrowseId = #{recentbrowseid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.RecentBrowse" >
+    insert into easybuy_recentbrowse (recentBrowseId, userId, productId, 
+      recentBrowseDate)
+    values (#{recentbrowseid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, 
+      #{recentbrowsedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.RecentBrowse" >
+    insert into easybuy_recentbrowse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recentbrowseid != null" >
+        recentBrowseId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="productid != null" >
+        productId,
+      </if>
+      <if test="recentbrowsedate != null" >
+        recentBrowseDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recentbrowseid != null" >
+        #{recentbrowseid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="recentbrowsedate != null" >
+        #{recentbrowsedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.RecentBrowse" >
+    update easybuy_recentbrowse
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="recentbrowsedate != null" >
+        recentBrowseDate = #{recentbrowsedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where recentBrowseId = #{recentbrowseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.RecentBrowse" >
+    update easybuy_recentbrowse
+    set userId = #{userid,jdbcType=INTEGER},
+      productId = #{productid,jdbcType=INTEGER},
+      recentBrowseDate = #{recentbrowsedate,jdbcType=TIMESTAMP}
+    where recentBrowseId = #{recentbrowseid,jdbcType=INTEGER}
+  </update>
+</mapper>

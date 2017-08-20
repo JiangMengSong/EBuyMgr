@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.syqb.ebuymgr.mapper.ShoppingCartMapper" >
+  <resultMap id="BaseResultMap" type="org.syqb.ebuymgr.pojo.ShoppingCart" >
+    <id column="shoppingCartId" property="shoppingcartid" jdbcType="INTEGER" />
+    <result column="productNum" property="productnum" jdbcType="INTEGER" />
+    <collection property="user" resultMap="org.syqb.ebuymgr.mapper.UserMapper.UserBean"/>
+    <collection property="product" resultMap="org.syqb.ebuymgr.mapper.ProductMapper.ProductBean"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    shoppingCartId, productId, userId, productNum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from easybuy_shoppingcart
+    where shoppingCartId = #{shoppingcartid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from easybuy_shoppingcart
+    where shoppingCartId = #{shoppingcartid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.ShoppingCart" >
+    insert into easybuy_shoppingcart (shoppingCartId, productId, userId, 
+      productNum)
+    values (#{shoppingcartid,jdbcType=INTEGER}, #{productid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{productnum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.ShoppingCart" >
+    insert into easybuy_shoppingcart
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shoppingcartid != null" >
+        shoppingCartId,
+      </if>
+      <if test="productid != null" >
+        productId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="productnum != null" >
+        productNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shoppingcartid != null" >
+        #{shoppingcartid,jdbcType=INTEGER},
+      </if>
+      <if test="productid != null" >
+        #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.ShoppingCart" >
+    update easybuy_shoppingcart
+    <set >
+      <if test="productid != null" >
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="productnum != null" >
+        productNum = #{productnum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where shoppingCartId = #{shoppingcartid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.ShoppingCart" >
+    update easybuy_shoppingcart
+    set productId = #{productid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      productNum = #{productnum,jdbcType=INTEGER}
+    where shoppingCartId = #{shoppingcartid,jdbcType=INTEGER}
+  </update>
+</mapper>

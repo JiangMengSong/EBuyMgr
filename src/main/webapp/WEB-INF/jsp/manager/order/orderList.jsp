@@ -10,15 +10,15 @@
 <html>
 <head>
     <title>后台管理 - 易买网</title>
-    <script>
-        function goToPage(pageIndex) {
-            $("#orderForm").attr("action","/order/getOrder.html/" + pageIndex);
-            $("#orderForm").submit();
-        }
-    </script>
 </head>
 <body>
 <%@include file="../common/title.jsp" %>
+<script>
+    function goToPage(pageIndex) {
+        $("#orderForm").attr("action","/order/getOrder.html/" + pageIndex);
+        $("#orderForm").submit();
+    }
+</script>
 <div id="main" class="wrap">
     <%@include file="../common/left.jsp" %>
     <div class="main">
@@ -30,7 +30,7 @@
             <form id="orderForm" method="post"  action="/order/getOrder.html/1">
                 订单号：<input type="text" value="${orderForm.orderserialnumber}" class="text" name="orderserialnumber" id="entityId" />
                 订货人：<input type="text" value="${orderForm.user.username}" class="text" name="user.username" />
-                <label class="ui-blue"><input type="submit" name="submit" value="查询" /></label>
+                <label class="ui-blue"><input type="submit" value="查询" /></label>
             </form>
             <table class="list">
                 <c:if test="${pages.pageList.size() < 1}">

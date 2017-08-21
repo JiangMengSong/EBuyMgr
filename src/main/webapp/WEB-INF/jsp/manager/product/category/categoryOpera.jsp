@@ -18,25 +18,32 @@
     <div class="main">
         <h2>修改分类</h2>
         <div class="manage">
-            <form action="manage-result.html">
+            <form method="post" id="categoryForm">
                 <table class="form">
                     <tr>
                         <td class="field">父分类：</td>
                         <td>
-                            <select name="parentId">
+                            <select name="categoryparentid">
                                 <option value="0" selected="selected">根栏目</option>
-                                <option value="1">电器</option>
-                                <option value="2">衣服</option>
+                                <c:forEach items="${categoryList}" var="categorys">
+                                    <option value="${categorys.categoryid}"
+                                            <c:if test="${categorys.categoryid == category.categoryparentid}">selected="selected"</c:if>
+                                    >${categorys.categoryname}</option>
+                                </c:forEach>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td class="field">分类名称：</td>
-                        <td><input type="text" class="text" name="className" value="电脑" /></td>
+                        <td><input type="text" class="text" name="categoryname" value="${category.categoryname}" /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><label class="ui-blue"><input type="submit" name="submit" value="更新" /></label></td>
+                        <td>
+                            <label class="ui-blue">
+                                <input type="button" id="subBtn" value="保存" />
+                            </label>
+                        </td>
                     </tr>
                 </table>
             </form>
@@ -53,14 +60,14 @@
     $(function () {
         $("#subBtn").click(function () {
             $.ajax({
-                url:"/mgr/news/doOperaNews.html",
-                data:$("#newsForm").serialize(),
+                url:"/mgr/category/doOperaCategory.html",
+                data:$("#categoryForm").serialize(),
                 type:"post",
                 dataType:"json",
                 success:function (result) {
                     if (result.flag){
                         alert("保存成功");
-                        location.href="/mgr/news/getNews.html/1";
+                        location.href="/mgr/category/getCategory.html/1";
                     }else alert("保存失败");
                 },error:function () {
                     alert("保存出错")

@@ -6,7 +6,7 @@ import org.syqb.ebuymgr.pojo.Product;
 import java.util.List;
 
 public interface ProductMapper {
-    int deleteByPrimaryKey(Integer productid);
+    int delProduct(@Param("productId") Integer productId);
 
     int insert(Product record);
 

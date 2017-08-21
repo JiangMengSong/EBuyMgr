@@ -15,6 +15,7 @@
     productId, productName, productDescription, productPrice, productStock, categoryId,
     productFileName, isDelete
   </sql>
+
     <sql id="CategoryInnerJoin">
         inner join easybuy_product_category
         on easybuy_product.categoryId = easybuy_product_category.categoryId
@@ -25,35 +26,41 @@
                 where categoryParentId = #{categoryId}
                 )
             </if>
+            and isDelete = 0
         </where>
     </sql>
+
     <select id="selectByPrimaryKey" resultMap="ProductBean" parameterType="java.lang.Integer">
-        select
-        <include refid="Base_Column_List"/>
+        select *
         from easybuy_product
         where productId = #{productid,jdbcType=INTEGER}
     </select>
+
     <select id="getProduct" resultMap="ProductBean">
         select * from easybuy_product
         <include refid="CategoryInnerJoin"/>
         limit #{pageIndex} , #{pageSize}
     </select>
+
     <select id="getProductCount" resultType="java.lang.Integer">
         select count(*) from easybuy_product
         <include refid="CategoryInnerJoin"/>
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from easybuy_product
-    where productId = #{productid,jdbcType=INTEGER}
-  </delete>
+
+    <update id="delProduct" parameterType="java.lang.Integer">
+        update from easybuy_product set isDelete = 1
+        where productId = #{productid,jdbcType=INTEGER}
+    </update>
+
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Product">
-    insert into easybuy_product (productId, productName, productDescription,
-      productPrice, productStock, categoryId,
-      productFileName, isDelete)
-    values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR},
-      #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER},
-      #{productfilename,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER})
+        insert into easybuy_product (productId, productName, productDescription,
+          productPrice, productStock, categoryId,
+          productFileName, isDelete)
+        values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR},
+          #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER},
+          #{productfilename,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER})
   </insert>
+
     <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Product">
         insert into easybuy_product
         <trim prefix="(" suffix=")" suffixOverrides=",">

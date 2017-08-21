@@ -43,26 +43,23 @@
     </select>
 
     <insert id="addCategory" parameterType="org.syqb.ebuymgr.pojo.Category">
-        insert into easybuy_product_category (categoryId, categoryName, categoryParentId,categoryType, iconClass)
-        values (0, #{category.categoryname}, #{category.categoryparentid},#{category.categorytype}, #{category.iconclass})
+        insert into easybuy_product_category (categoryId, categoryName, categoryParentId, iconClass)
+        values (0, #{category.categoryname}, #{category.categoryparentid}, #{category.iconclass})
     </insert>
 
     <update id="updateCategory" parameterType="org.syqb.ebuymgr.pojo.Category">
         update easybuy_product_category
         <set>
             <if test="categoryname != null">
-                categoryName = #{categoryname,jdbcType=VARCHAR},
+                categoryName = #{category.categoryname,jdbcType=VARCHAR},
             </if>
             <if test="categoryparentid != null">
-                categoryParentId = #{categoryparentid,jdbcType=INTEGER},
-            </if>
-            <if test="categorytype != null">
-                categoryType = #{categorytype,jdbcType=INTEGER},
+                categoryParentId = #{category.categoryparentid,jdbcType=INTEGER},
             </if>
             <if test="iconclass != null">
-                iconClass = #{iconclass,jdbcType=VARCHAR},
+                iconClass = #{category.iconclass,jdbcType=VARCHAR},
             </if>
         </set>
-        where categoryId = #{categoryid,jdbcType=INTEGER}
+        where categoryId = #{category.categoryid,jdbcType=INTEGER}
     </update>
 </mapper>

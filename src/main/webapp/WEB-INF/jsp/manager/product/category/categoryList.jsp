@@ -34,7 +34,7 @@
                         <td class="first w4 c">${category.categoryid}</td>
                         <td>${category.categoryname}</td>
                         <td class="w1 c">
-                            <a href="productClass-modify.html">修改</a>
+                            <a href="/mgr/category/toOperaCategory.html/${category.categoryid}">修改</a>
                             <a class="manageDel" onclick="delCategory(${category.categoryid})" href="javascript:void(0)">删除</a>
                         </td>
                     </tr>
@@ -44,8 +44,8 @@
                                 <td class="first w4 c">${categorys.categoryid}</td>
                                 <td class="childClass">${categorys.categoryname}</td>
                                 <td class="w1 c">
-                                    <a href="productClass-modify.html">修改</a>
-                                    <a class="manageDel" onclick="delCategory(${category.categoryid})" href="javascript:void(0)">删除</a>
+                                    <a href="/mgr/category/toOperaCategory.html/${categorys.categoryid}">修改</a>
+                                    <a class="manageDel" onclick="delCategory(${categorys.categoryid})" href="javascript:void(0)">删除</a>
                                 </td>
                             </tr>
                         </c:forEach>

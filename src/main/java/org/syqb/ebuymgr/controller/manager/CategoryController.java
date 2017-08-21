@@ -51,9 +51,28 @@ public class CategoryController {
         return result.toString();
     }
 
-    @RequestMapping(value = "/toUpdateCategory.html/{categoryId}", produces = "text/html;charset=utf-8")
-    public String toUpdateCategory(HttpServletRequest request,@PathVariable Integer categoryId) {
-
+    @RequestMapping(value = "/toOperaCategory.html", produces = "text/html;charset=utf-8")
+    public String toOperaCategory(HttpServletRequest request) {
+        request.setAttribute("categoryList",categoryService.getCategory());
         return "manager/product/category/categoryOpera";
+    }
+
+    @RequestMapping(value = "/toOperaCategory.html/{categoryId}", produces = "text/html;charset=utf-8")
+    public String toOperaCategory(HttpServletRequest request,@PathVariable Integer categoryId) {
+        request.setAttribute("category",categoryService.getCategoryById(categoryId));
+        request.setAttribute("categoryList",categoryService.getCategory());
+        return "manager/product/category/categoryOpera";
+    }
+
+    @RequestMapping(value = "/doOperaCategory.html", produces = "text/html;charset=utf-8")
+    @ResponseBody
+    public String doOperaCategory(Category category){
+        JSONObject result = new JSONObject();
+        result.put("flag",false);
+        if (category != null ){
+            if (category.getCategoryid() == null && categoryService.addCategory(category)>0) result.put("flag",true);
+            if (category.getCategoryid() != null && categoryService.updateCategory(category)>0) result.put("flag",true);
+        }
+        return result.toString();
     }
 }

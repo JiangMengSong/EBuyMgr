@@ -7,8 +7,6 @@ public class Category {
 
     private Integer categoryparentid;
 
-    private Integer categorytype;
-
     private String iconclass;
 
     public Integer getCategoryid() {
@@ -33,14 +31,6 @@ public class Category {
 
     public void setCategoryparentid(Integer categoryparentid) {
         this.categoryparentid = categoryparentid;
-    }
-
-    public Integer getCategorytype() {
-        return categorytype;
-    }
-
-    public void setCategorytype(Integer categorytype) {
-        this.categorytype = categorytype;
     }
 
     public String getIconclass() {

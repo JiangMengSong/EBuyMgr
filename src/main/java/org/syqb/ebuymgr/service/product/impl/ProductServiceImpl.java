@@ -29,4 +29,9 @@ public class ProductServiceImpl implements ProductService {
     public Product getProById(int id) {
         return productMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int delProduct(Integer productId) {
+        return productMapper.delProduct(productId);
+    }
 }

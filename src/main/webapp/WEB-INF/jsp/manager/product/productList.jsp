@@ -38,7 +38,7 @@
                         </td>
                         <td class="w1 c">
                             <a href="product-modify.html">修改</a>
-                            <a class="manageDel" href="javascript:void(0)">删除</a>
+                            <a class="manageDel" onclick="delProduct(${product.productid})" href="javascript:void(0)">删除</a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -51,5 +51,26 @@
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号
 </div>
+<script>
+    function delProduct(productId) {
+        if (confirm("确定要删除吗？")) {
+            $.ajax({
+                url:"/product/delProduct.html/"+productId,
+                dataType:"json",
+                type:"POST",
+                success:function (result) {
+                    if (result.flag){
+                        alert("删除成功");
+                        location.reload();
+                    }else alert("删除失败");
+                },error:function () {
+                    alert("删除出错")
+                }
+            })
+        } else {
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

@@ -11,4 +11,6 @@ public interface ProductService {
     int getProductCount(Integer categoryId);
 
     Product getProById(int id);
+
+    int delProduct(Integer productId);
 }

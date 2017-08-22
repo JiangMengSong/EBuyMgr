@@ -48,8 +48,8 @@
     </select>
 
     <update id="delProduct" parameterType="java.lang.Integer">
-        update from easybuy_product set isDelete = 1
-        where productId = #{productid,jdbcType=INTEGER}
+        update easybuy_product set isDelete = 1
+        where productId = #{productId}
     </update>
 
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Product">

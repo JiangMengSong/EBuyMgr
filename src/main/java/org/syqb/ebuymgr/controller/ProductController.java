@@ -1,8 +1,10 @@
 package org.syqb.ebuymgr.controller;
 
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.syqb.ebuymgr.common.Pages;
 import org.syqb.ebuymgr.pojo.Product;
 import org.syqb.ebuymgr.service.product.CategoryService;
@@ -68,5 +70,14 @@ public class ProductController {
         else {
             return "product/product-view";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/delProduct.html/{productId}", produces = "text/html;charset=utf-8")
+    public String delProduct(@PathVariable Integer productId){
+        JSONObject result = new JSONObject();
+        result.put("flag",false);
+        if (productId != null && productService.delProduct(productId)>0) result.put("flag",true);
+        return result.toString();
     }
 }

@@ -7,7 +7,7 @@ public class Product {
 
     private String productdescription;
 
-    private Float productprice;
+    private Double productprice;
 
     private Integer productstock;
 
@@ -41,11 +41,11 @@ public class Product {
         this.productdescription = productdescription;
     }
 
-    public Float getProductprice() {
+    public Double getProductprice() {
         return productprice;
     }
 
-    public void setProductprice(Float productprice) {
+    public void setProductprice(Double productprice) {
         this.productprice = productprice;
     }
 

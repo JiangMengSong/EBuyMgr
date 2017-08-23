@@ -16,7 +16,7 @@ public interface ProductService {
 
     int insert(Product product);
 
-    int delProduct(int id);
+    int delProduct(Integer id);
 
     List<UserAddress> selectByUserid(Integer userid);
 

@@ -45,8 +45,8 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.insert(product);
     }
 
-    public int delProduct(int id){
-        return productMapper.deleteByPrimaryKey(id);
+    public int delProduct(Integer id){
+        return productMapper.delProduct(id);
     }
 
     @Override

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.org.syqb.ebuymgr.mapper.RecentBrowseMapper" >
+<mapper namespace="org.syqb.ebuymgr.mapper.RecentBrowseMapper" >
   <resultMap id="BaseResultMap" type="org.syqb.ebuymgr.pojo.RecentBrowse" >
     <id column="recentBrowseId" property="recentbrowseid" jdbcType="INTEGER" />
     <result column="recentBrowseDate" property="recentbrowsedate" jdbcType="TIMESTAMP" />

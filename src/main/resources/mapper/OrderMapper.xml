@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.org.syqb.ebuymgr.mapper.OrderMapper">
+<mapper namespace="org.syqb.ebuymgr.mapper.OrderMapper">
     <resultMap id="OrderBean" type="org.syqb.ebuymgr.pojo.Order">
         <id column="orderId" property="orderid" jdbcType="INTEGER"/>
         <result column="orderCreateTime" property="ordercreatetime" jdbcType="TIMESTAMP"/>
@@ -42,10 +42,13 @@
     </delete>
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Order">
         insert into easybuy_order (orderId, userId, orderCreateTime,
-        orderCost, orderSerialNumber)
-        values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{ordercreatetime,jdbcType=TIMESTAMP},
-        #{ordercost,jdbcType=DOUBLE}, #{orderserialnumber,jdbcType=VARCHAR})
+        orderCost, orderSerialNumber,addressid)
+
+        values (
+        0, #{order.user.userid,jdbcType=INTEGER}, NOW(),
+        #{order.ordercost,jdbcType=DOUBLE}, #{order.orderserialnumber,jdbcType=VARCHAR},#{order.address.addressid,jdbcType=VARCHAR})
     </insert>
+
     <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Order">
         insert into easybuy_order
         <trim prefix="(" suffix=")" suffixOverrides=",">

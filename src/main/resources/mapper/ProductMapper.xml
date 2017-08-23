@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.org.syqb.ebuymgr.mapper.ProductMapper">
+<mapper namespace="org.syqb.ebuymgr.mapper.ProductMapper">
     <resultMap id="ProductBean" type="org.syqb.ebuymgr.pojo.Product">
         <id column="productId" property="productid" jdbcType="INTEGER"/>
         <result column="productName" property="productname" jdbcType="VARCHAR"/>
@@ -48,8 +48,8 @@
     </select>
 
     <update id="delProduct" parameterType="java.lang.Integer">
-        update easybuy_product set isDelete = 1
-        where productId = #{productId}
+        update from easybuy_product set isDelete = 1
+        where productId = #{productid,jdbcType=INTEGER}
     </update>
 
     <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Product">

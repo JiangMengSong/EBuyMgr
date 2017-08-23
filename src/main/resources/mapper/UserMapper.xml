@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.syqb.org.syqb.ebuymgr.mapper.UserMapper">
+<mapper namespace="org.syqb.ebuymgr.mapper.UserMapper">
     <resultMap id="UserBean" type="org.syqb.ebuymgr.pojo.User">
         <id column="userId" property="userid" jdbcType="INTEGER"/>
         <result column="loginName" property="loginname" jdbcType="VARCHAR"/>

@@ -31,13 +31,13 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-        <property name="typeAliasesPackage" value="org.syqb.org.syqb.ebuymgr.pojo"/>
+        <property name="typeAliasesPackage" value="org.syqb.ebuymgr.pojo"/>
         <!--<property name="configLocation" value="classpath:config/mybatis-config.xml"/>-->
     </bean>
 
     <!-- mybatis自动扫描加载Sql映射文件/接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.syqb.org.syqb.ebuymgr.mapper"/>
+        <property name="basePackage" value="org.syqb.ebuymgr.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

@@ -8,7 +8,7 @@ import java.util.List;
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer orderid);
 
-    int insert(Order record);
+    int insert(@Param("order") Order order);
 
     int insertSelective(Order record);
 
@@ -20,5 +20,5 @@ public interface OrderMapper {
 
     int getOrderCount();
 
-    List<Order> getOrderByPage(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize,@Param("order") Order order);
+    List<Order> getOrderByPage(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize, @Param("order") Order order);
 }

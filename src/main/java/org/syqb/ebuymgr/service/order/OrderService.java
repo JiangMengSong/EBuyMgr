@@ -8,5 +8,5 @@ import java.util.List;
 public interface OrderService {
     int getOrderCount();
 
-    List<Order> getOrderByPage(Pages<Order> pages,Order order);
+    List<Order> getOrderByPage(Pages<Order> pages, Order order);
 }

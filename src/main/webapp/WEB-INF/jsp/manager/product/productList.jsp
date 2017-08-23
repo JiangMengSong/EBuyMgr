@@ -34,7 +34,7 @@
                         <td class="first w4 c">${product.productid}</td>
                         <td class="thumb">
                             <img src="../../../statics/images/product/0_tiny.gif" />
-                            <a href="../product-view.html" target="_self">${product.productname}</a>
+                            <a href="/product/proDetail.html/${product.productid}" target="_self">${product.productname}</a>
                         </td>
                         <td class="w1 c">
                             <a href="product-modify.html">修改</a>
@@ -51,11 +51,12 @@
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号
 </div>
+
 <script>
-    function delProduct(productId) {
+    function delProduct(productid) {
         if (confirm("确定要删除吗？")) {
             $.ajax({
-                url:"/product/delProduct.html/"+productId,
+                url:"/product/delProduct.html/"+productid,
                 dataType:"json",
                 type:"POST",
                 success:function (result) {

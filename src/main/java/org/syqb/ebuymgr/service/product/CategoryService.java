@@ -1,11 +1,9 @@
 package org.syqb.ebuymgr.service.product;
 
-import org.apache.ibatis.annotations.Param;
 import org.syqb.ebuymgr.common.Pages;
 import org.syqb.ebuymgr.pojo.Category;
 
 import java.util.List;
-import java.util.Map;
 
 public interface CategoryService {
     List<Category> getCategory();

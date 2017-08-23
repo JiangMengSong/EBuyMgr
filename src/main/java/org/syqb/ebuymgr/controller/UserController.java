@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.syqb.ebuymgr.common.Pages;
-import org.syqb.ebuymgr.pojo.News;
 import org.syqb.ebuymgr.pojo.User;
 import org.syqb.ebuymgr.service.user.UserService;
 

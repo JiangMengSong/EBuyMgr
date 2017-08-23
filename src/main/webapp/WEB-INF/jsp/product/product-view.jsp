@@ -25,7 +25,7 @@
             <div class="buy">
                 商城价：<span class="price">￥${pro.productprice}</span><br />
                 库　存：${pro.productstock}
-                <div class="button"><input type="button" name="button" value="" onclick="location.href = 'address.html'" /><a href="shopping.html">放入购物车</a></div>
+                <div class="button"><input type="button" name="button" value="" onclick="location.href = '/product/getAddress.html/${pro.productid}'" /><a href="shopping.html">放入购物车</a></div>
             </div>
             <div class="clear"></div>
         </div>

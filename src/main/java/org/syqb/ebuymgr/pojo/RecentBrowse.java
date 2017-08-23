@@ -7,7 +7,7 @@ public class RecentBrowse {
 
     private User user;
 
-    private Product product;
+    private org.syqb.ebuymgr.pojo.Product product;
 
     private Date recentbrowsedate;
 
@@ -27,7 +27,7 @@ public class RecentBrowse {
         this.user = user;
     }
 
-    public Product getProduct() {
+    public org.syqb.ebuymgr.pojo.Product getProduct() {
         return product;
     }
 

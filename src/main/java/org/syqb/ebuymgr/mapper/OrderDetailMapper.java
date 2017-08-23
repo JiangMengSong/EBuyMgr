@@ -18,5 +18,5 @@ public interface OrderDetailMapper {
 
     int updateByPrimaryKey(OrderDetail record);
 
-    List<OrderDetail> getOrderDetailByOrderId(@Param("orderId")Integer orderId);
+    List<OrderDetail> getOrderDetailByOrderId(@Param("orderId") Integer orderId);
 }

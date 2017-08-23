@@ -20,7 +20,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrderByPage(Pages<Order> pages,Order order) {
+    public List<Order> getOrderByPage(Pages<Order> pages, Order order) {
         return orderMapper.getOrderByPage((pages.getPageIndex() - 1) * pages.getPageSize(), pages.getPageSize(),order);
     }
 }

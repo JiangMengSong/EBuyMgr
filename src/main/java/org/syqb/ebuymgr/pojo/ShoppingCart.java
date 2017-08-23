@@ -5,7 +5,7 @@ public class ShoppingCart {
 
     private User user;
 
-    private Product product;
+    private org.syqb.ebuymgr.pojo.Product product;
 
     private Integer productnum;
 
@@ -25,7 +25,7 @@ public class ShoppingCart {
         this.user = user;
     }
 
-    public Product getProduct() {
+    public org.syqb.ebuymgr.pojo.Product getProduct() {
         return product;
     }
 

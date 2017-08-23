@@ -7,17 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 public interface CategoryMapper {
-    Map<String, Object> delCategory(@Param("map")Map<String, Object> map);
+    Map<String, Object> delCategory(@Param("map") Map<String, Object> map);
 
-    int addCategory(@Param("category")Category category);
+    int addCategory(@Param("category") Category category);
 
     Category getCategoryById(@Param("categoryId") Integer categoryId);
 
-    int updateCategory(@Param("category")Category category);
+    int updateCategory(@Param("category") Category category);
 
     List<Category> getCategory(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSi);
 
-    List<Category> getCategoryByParentId(@Param("parentId")Integer parentId);
+    List<Category> getCategoryByParentId(@Param("parentId") Integer parentId);
 
     int getCountByLevel(@Param("level") Integer level);
 }

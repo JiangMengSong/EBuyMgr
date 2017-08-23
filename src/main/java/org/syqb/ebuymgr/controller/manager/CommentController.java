@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.syqb.ebuymgr.common.Pages;
 import org.syqb.ebuymgr.pojo.Comment;
-import org.syqb.ebuymgr.pojo.News;
 import org.syqb.ebuymgr.service.user.CommentService;
 
 import javax.annotation.Resource;

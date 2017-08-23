@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @RequestMapping(value = "/getOrder.html/{pageIndex}", produces = "text/html;charset=utf-8")
-    public String getOrder(HttpServletRequest request, Pages<Order> pages,Order order) {
+    public String getOrder(HttpServletRequest request, Pages<Order> pages, Order order) {
         pages.setPageSize(2);
         pages.setTotalCount(orderService.getOrderCount());
         pages.setPageList(orderService.getOrderByPage(pages,order));

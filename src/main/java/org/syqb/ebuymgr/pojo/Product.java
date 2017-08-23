@@ -15,7 +15,7 @@ public class Product {
 
     private Integer isdelete;
 
-    private Category category;
+    private org.syqb.ebuymgr.pojo.Category category;
 
     public Integer getProductid() {
         return productid;
@@ -73,7 +73,7 @@ public class Product {
         this.isdelete = isdelete;
     }
 
-    public Category getCategory() {
+    public org.syqb.ebuymgr.pojo.Category getCategory() {
         return category;
     }
 

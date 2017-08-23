@@ -13,7 +13,7 @@ public class Order {
 
     private String orderserialnumber;
 
-    private UserAddress address;
+    private org.syqb.ebuymgr.pojo.UserAddress address;
 
     public Integer getOrderid() {
         return orderid;
@@ -55,7 +55,7 @@ public class Order {
         this.orderserialnumber = orderserialnumber;
     }
 
-    public UserAddress getAddress() {
+    public org.syqb.ebuymgr.pojo.UserAddress getAddress() {
         return address;
     }
 

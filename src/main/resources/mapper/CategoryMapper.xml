@@ -5,7 +5,6 @@
         <id column="categoryId" property="categoryid" jdbcType="INTEGER"/>
         <result column="categoryName" property="categoryname" jdbcType="VARCHAR"/>
         <result column="categoryParentId" property="categoryparentid" jdbcType="INTEGER"/>
-        <result column="categoryType" property="categorytype" jdbcType="INTEGER"/>
         <result column="iconClass" property="iconclass" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="getCategoryById" resultMap="CategoryBean" parameterType="java.lang.Integer">

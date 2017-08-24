@@ -26,10 +26,9 @@
                     dateType:"json",
                     type:"post",
                     success: function (result) {
-                        alert(result.flag);
-                        if (result.flag) {
+                        if (JSON.parse(result).flag) {
                             alert('购买成功');
-                            location.href = "/product/getProduct.html";
+                            location.href = "/product/doResult.html";
                         } else alert("购买失败");
                     }, error: function () {
                         alert("购买错误")

@@ -134,6 +134,7 @@ public class ProductController {
     @RequestMapping(value = "/getAddress.html/{productid}", produces = "text/html;charset=utf-8")
     public String getAddress(@PathVariable Integer productid, HttpSession session, HttpServletRequest request) {
         User users = (User) session.getAttribute("users");
+        if (users == null) return "redirect:/user/toLogin.html";
         List<UserAddress> list = productService.selectByUserid(users.getUserid());
         request.setAttribute("addlist", list);
         request.setAttribute("productid", productid);
@@ -149,12 +150,16 @@ public class ProductController {
         Product pro = productService.getProById(productid);
         order.setUser((User) session.getAttribute("users"));
         StringBuffer a = new StringBuffer();
-        for (int i = 0; i < 10; i++) a.append((10 * Math.random()));
+        for (int i = 0; i < 10; i++) a.append((int)(10 * Math.random()));
         order.setOrderserialnumber(a.toString());
         order.setOrdercost(pro.getProductprice());
-        int sum = productService.insertOrder(order);
-        if (sum > 0)
-            result.put("flag", true);
+        if (productService.insertOrder(order) > 0) result.put("flag", true);
         return result.toString();
     }
+
+    @RequestMapping(value = "/doResult.html", produces = "text/html;charset=utf-8")
+    public String doResult() {
+        return "product/shopping-result";
+    }
+
 }

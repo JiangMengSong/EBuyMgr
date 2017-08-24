@@ -21,11 +21,14 @@
     <div id="product" class="main">
         <h1>${pro.productname}</h1>
         <div class="infos">
-            <div class="thumb"><img src="images/product/10.jpg" width="110" height="106" /></div>
+            <div class="thumb"><img src="${project}/static/images/product/${pro.productfilename}" width="110" height="106" /></div>
             <div class="buy">
                 商城价：<span class="price">￥${pro.productprice}</span><br />
                 库　存：${pro.productstock}
-                <div class="button"><input type="button" name="button" value="" onclick="location.href = '/product/getAddress.html/${pro.productid}'" /><a href="shopping.html">放入购物车</a></div>
+                <div class="button">
+                    <input type="button" name="button" value="" onclick="shopping(${pro.productid})" />
+                    <a href="shopping.html">放入购物车</a>
+                </div>
             </div>
             <div class="clear"></div>
         </div>
@@ -43,7 +46,15 @@
 <div id="footer">
     Copyright &copy; 2013 北大青鸟 All Rights Reserved. 京ICP证1000001号
 </div>
-
+<script>
+    function shopping(productId) {
+        if (${empty users}) {
+            alert('登录后再购买');
+            location.href='/user/toLogin.html'
+        }
+        location.href = '/product/getAddress.html/'+productId;
+    }
+</script>
 
 </body>
 </html>

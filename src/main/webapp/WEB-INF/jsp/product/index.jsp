@@ -41,7 +41,7 @@
                 <c:forEach items="${pages.pageList}" var="product">
                     <li>
                         <dl>
-                            <dt><a href="product-view.html" target="_self"><img src="images/product/1.jpg"/></a></dt>
+                            <dt><a href="/product/proDetail.html/${product.productid}" target="_self"><img src="${project}/static/images/product/${product.productfilename}"/></a></dt>
                             <dd class="title"><a href="/product/proDetail.html/${product.productid}" target="_self">${product.productname}</a></dd>
                             <dd class="price">￥${product.productprice}</dd>
                         </dl>

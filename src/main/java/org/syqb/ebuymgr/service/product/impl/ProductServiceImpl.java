@@ -41,8 +41,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public int insert(Product product) {
-        return productMapper.insert(product);
+    public int addProduct(Product product) {
+        return productMapper.addProduct(product);
+    }
+
+    @Override
+    public int updateProduct(Product product) {
+        return productMapper.updateProduct(product);
     }
 
     public int delProduct(Integer id){

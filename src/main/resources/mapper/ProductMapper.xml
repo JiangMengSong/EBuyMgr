@@ -28,6 +28,7 @@
             </if>
             and isDelete = 0
         </where>
+        order by productId desc
     </sql>
 
     <select id="selectByPrimaryKey" resultMap="ProductBean" parameterType="java.lang.Integer">
@@ -52,96 +53,37 @@
         where productId = #{productid,jdbcType=INTEGER}
     </update>
 
-    <insert id="insert" parameterType="org.syqb.ebuymgr.pojo.Product">
+    <insert id="addProduct" parameterType="org.syqb.ebuymgr.pojo.Product">
         insert into easybuy_product (productId, productName, productDescription,
           productPrice, productStock, categoryId,
           productFileName, isDelete)
-        values (#{productid,jdbcType=INTEGER}, #{productname,jdbcType=VARCHAR}, #{productdescription,jdbcType=VARCHAR},
-          #{productprice,jdbcType=REAL}, #{productstock,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER},
-          #{productfilename,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER})
-  </insert>
-
-    <insert id="insertSelective" parameterType="org.syqb.ebuymgr.pojo.Product">
-        insert into easybuy_product
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="productid != null">
-                productId,
-            </if>
-            <if test="productname != null">
-                productName,
-            </if>
-            <if test="productdescription != null">
-                productDescription,
-            </if>
-            <if test="productprice != null">
-                productPrice,
-            </if>
-            <if test="productstock != null">
-                productStock,
-            </if>
-            <if test="categoryid != null">
-                categoryId,
-            </if>
-            <if test="productfilename != null">
-                productFileName,
-            </if>
-            <if test="isdelete != null">
-                isDelete,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="productid != null">
-                #{productid,jdbcType=INTEGER},
-            </if>
-            <if test="productname != null">
-                #{productname,jdbcType=VARCHAR},
-            </if>
-            <if test="productdescription != null">
-                #{productdescription,jdbcType=VARCHAR},
-            </if>
-            <if test="productprice != null">
-                #{productprice,jdbcType=REAL},
-            </if>
-            <if test="productstock != null">
-                #{productstock,jdbcType=INTEGER},
-            </if>
-            <if test="categoryid != null">
-                #{categoryid,jdbcType=INTEGER},
-            </if>
-            <if test="productfilename != null">
-                #{productfilename,jdbcType=VARCHAR},
-            </if>
-            <if test="isdelete != null">
-                #{isdelete,jdbcType=INTEGER},
-            </if>
-        </trim>
+        values (0, #{product.productname,jdbcType=VARCHAR}, #{product.productdescription,jdbcType=VARCHAR},
+          #{product.productprice,jdbcType=REAL}, #{product.productstock,jdbcType=INTEGER}, #{product.category.categoryid,jdbcType=INTEGER},
+          #{product.productfilename,jdbcType=VARCHAR}, 0)
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="org.syqb.ebuymgr.pojo.Product">
+    <update id="updateProduct" parameterType="org.syqb.ebuymgr.pojo.Product">
         update easybuy_product
         <set>
-            <if test="productname != null">
-                productName = #{productname,jdbcType=VARCHAR},
+            <if test="product.productname != null">
+                productName = #{product.productname,jdbcType=VARCHAR},
             </if>
-            <if test="productdescription != null">
-                productDescription = #{productdescription,jdbcType=VARCHAR},
+            <if test="product.productdescription != null">
+                productDescription = #{product.productdescription,jdbcType=VARCHAR},
             </if>
-            <if test="productprice != null">
-                productPrice = #{productprice,jdbcType=REAL},
+            <if test="product.productprice != null">
+                productPrice = #{product.productprice,jdbcType=REAL},
             </if>
-            <if test="productstock != null">
-                productStock = #{productstock,jdbcType=INTEGER},
+            <if test="product.productstock != null">
+                productStock = #{product.productstock,jdbcType=INTEGER},
             </if>
-            <if test="categoryid != null">
-                categoryId = #{categoryid,jdbcType=INTEGER},
+            <if test="product.category != null and product.category.categoryid != null and product.category.categoryid > 0">
+                categoryId = #{product.category.categoryid,jdbcType=INTEGER},
             </if>
-            <if test="productfilename != null">
-                productFileName = #{productfilename,jdbcType=VARCHAR},
-            </if>
-            <if test="isdelete != null">
-                isDelete = #{isdelete,jdbcType=INTEGER},
+            <if test="product.productfilename != null">
+                productFileName = #{product.productfilename,jdbcType=VARCHAR},
             </if>
         </set>
-        where productId = #{productid,jdbcType=INTEGER}
+        where productId = #{product.productid,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="org.syqb.ebuymgr.pojo.Product">
     update easybuy_product

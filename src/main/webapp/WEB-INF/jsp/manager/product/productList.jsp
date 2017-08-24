@@ -37,7 +37,7 @@
                             <a href="/product/proDetail.html/${product.productid}" target="_self">${product.productname}</a>
                         </td>
                         <td class="w1 c">
-                            <a href="product-modify.html">修改</a>
+                            <a href="/product/toOperaProduct.html/${product.productid}">修改</a>
                             <a class="manageDel" onclick="delProduct(${product.productid})" href="javascript:void(0)">删除</a>
                         </td>
                     </tr>

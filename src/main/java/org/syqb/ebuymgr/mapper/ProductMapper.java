@@ -8,15 +8,11 @@ import java.util.List;
 public interface ProductMapper {
     int delProduct(@Param("productId") Integer productId);
 
-    int insert(Product record);
-
-    int insertSelective(Product record);
+    int addProduct(@Param("product") Product product);
 
     Product selectByPrimaryKey(Integer productid);
 
-    int updateByPrimaryKeySelective(Product record);
-
-    int updateByPrimaryKey(Product record);
+    int updateProduct(@Param("product") Product product);
 
     List<Product> getProduct(@Param("pageIndex") Integer pageIndex, @Param("pageSize") Integer pageSize, @Param("categoryId") Integer categoryId);
 

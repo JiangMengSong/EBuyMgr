@@ -15,7 +15,7 @@ public class Product {
 
     private Integer isdelete;
 
-    private org.syqb.ebuymgr.pojo.Category category;
+    private Category category;
 
     public Integer getProductid() {
         return productid;

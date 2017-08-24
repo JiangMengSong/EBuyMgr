@@ -14,7 +14,9 @@ public interface ProductService {
 
     Product getProById(int id);
 
-    int insert(Product product);
+    int addProduct(Product product);
+
+    int updateProduct(Product product);
 
     int delProduct(Integer id);
 
